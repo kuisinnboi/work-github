@@ -1,14 +1,18 @@
-<div>
-  <p>ようこそ、ながのCAKEへ！</p>
-  <p>このサイトは、ケーキ販売のECサイトになります。</p>
-  <p>会員でない方も商品の閲覧はできますが、</p>
-  <p>購入には会員登録が必要になります。</p>
-</div>
-
-<div>
-  <h1>新着商品</h1>
-  <% link_to image %>
-  <% link_to name %>
-  <% link_to price %>
-  <% link_to　"全ての商品を見る" %>
+<div class="container">
+  <div class="row">
+    <p>ようこそ、ながのCAKEへ！</p>
+    <p>このサイトは、ケーキ販売のECサイトになります。</p>
+    <p>会員でない方も商品の閲覧はできますが、</p>
+    <p>購入には会員登録が必要になります。</p>
+  </div>
+  <div class="row">
+    <h2>新着商品</h2>
+    <div class="mx-auto col-lg-4">
+      <% items.each do |items| %>
+      <%= link_to image_tag items_image, size:'50x50' %>
+      <%= link_to name %>
+      <%= link_to price %>
+    </div>
+    <%= link_to　"全ての商品を見る","image/index" %>
+  </div>
 </div>
