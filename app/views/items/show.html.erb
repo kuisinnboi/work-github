@@ -1,2 +1,25 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-lg-2">
+      <table class='table'>
+        <tr>
+          <td><%= image_tag @item.items_image,size:"200x200" %></td>
+          <td><%= @item.name %></td>
+          <td><%= @item.introduction %></td>
+          <td>￥<%= @item.add_tax_price.to_s(:delimited) %>（税込）</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="mx-auto col-lg-2">
+      <table class="table">
+        <tr>
+          <%= form__with model: @cart_items do |f| %>
+          <td><%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"]], include_blank: "個数選択" %></td>
+          <td><%= f.submit "カートに入れる" class="btn btn-secondary text-white" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

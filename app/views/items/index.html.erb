@@ -12,7 +12,7 @@
             <%= image_tag items_image, size:'100x100' %>
           <% end %>
           <%= link_to name, item_path %>
-          <%= link_to price, item_path %>
+          <%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %>
         </div>
       <% end %>
     </div>
