@@ -1,18 +1,26 @@
 <div class="container">
+
   <div class="row">
-    <p>ようこそ、ながのCAKEへ！</p>
-    <p>このサイトは、ケーキ販売のECサイトになります。</p>
-    <p>会員でない方も商品の閲覧はできますが、</p>
-    <p>購入には会員登録が必要になります。</p>
+    <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
+    <div class="col text-center">
+      <p>ようこそ、ながのCAKEへ！</p>
+      <p>このサイトは、ケーキ販売のECサイトになります。</p>
+      <p>会員でない方も商品の閲覧はできますが、</p>
+      <p>購入には会員登録が必要になります。</p>
+    </div>
   </div>
+
   <div class="row">
     <h2>新着商品</h2>
     <div class="mx-auto col-lg-4">
-      <% items.each do |items| %>
-      <%= link_to image_tag items_image, size:'50x50' %>
-      <%= link_to name %>
-      <%= link_to price %>
+      <% @items.each do |items| %>
+      <div>
+        <%= link_to image_tag items_image, size:'50x50' %>
+        <%= link_to name %>
+        <%= link_to price %>
+      </div>
+      <% end %>
     </div>
-    <%= link_to　"全ての商品を見る","image/index" %>
+    <%= link_to　"全ての商品を見る","items/index" %>
   </div>
 </div>
