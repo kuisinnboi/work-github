@@ -6,17 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
    <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #e3f2fd;">
      <div class="container-fluid">
-       <a class="navbar-brand" href="#">ながのCAKE</a>
-       
-       <div class="collapse navbar-collapse" id="navbarNav">
+       <a class="navbar-brand" href="/">ながのCAKE</a>
+       <div class="collapse navbar-collapse" id="navbarNav" >
          <ul class="navbar-nav">
           <% if customer_signed_in? %>
            <li class="nav-item">
@@ -40,6 +39,9 @@
     </nav>
    </header>
 
-  <%= yield %>
+    <%= yield %>
+   <footer class="fixed-bottom ">
+    <nav class="mt-auto navbar navbar-expand-lg bg-body-tertiary" style="height:50px; background-color: #e3f2fd;"></nav>
+   </footer>
   </body>
 </html>
