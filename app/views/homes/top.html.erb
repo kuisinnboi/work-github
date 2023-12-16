@@ -15,12 +15,12 @@
     <div class="mx-auto col-lg-4">
       <% @items.each do |items| %>
       <div>
-        <%= link_to image_tag items_image, size:'50x50' %>
-        <%= link_to name %>
-        <%= link_to price %>
+        <%= link_to image_tag items_image, size:'100x100', items_show_path %>
+        <%= link_to name, items_show_path %>
+        <%= link_to price, items_show_path %>
       </div>
       <% end %>
     </div>
-    <%= link_to　"全ての商品を見る","items/index" %>
+    <%= link_to "全ての商品を見る", items_index_path %>
   </div>
 </div>
