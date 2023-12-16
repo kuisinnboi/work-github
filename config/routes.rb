@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'items/index'
+  get 'items/show'
+  get 'public_items/index'
+  get 'public_items/show'
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
