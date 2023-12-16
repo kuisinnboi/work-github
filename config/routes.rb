@@ -54,9 +54,3 @@ Rails.application.routes.draw do
 
 end
 
-      resources :customers, only: [:show, :edit, :update, :index]
-      resources :orders, only: [:show, :update]
-      resources :order_details, only: [:update]
-  end
-end
-
