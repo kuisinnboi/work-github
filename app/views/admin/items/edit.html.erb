@@ -1,2 +1,74 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-10 offset-md-1'>
+      <h2>商品編集</h2>
+          <%= form_with model: @item do |f| %>
+            <% if @item.errors.any? %>
+              <div class="alert alert-warning">
+                <ul>
+                  <% @item.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <table class="table_items_new">
+              <tr>
+                <td>
+                  商品画像
+                </td>
+                <td>
+                  <%= f.file_field :item_image %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  商品名
+                </td>
+                <td>
+                  <%= f.text_field :name ,:placeholder => "商品名" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  商品説明
+                </td>
+                <td>
+                  <%= f.text_area :introduction ,:placeholder => "ここに説明文を記述します" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  ジャンル
+                </td>
+                <td>
+                  <%#= f.collection_select(:genre_id, @genre, :id, :name) %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  税抜価格
+                </td>
+                <td>
+                  <%= f.text_field :price ,:placeholder => "1000" %>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  販売ステータス
+                </td>
+                <td>
+                  <%= f.radio_button :is_active, :true %>
+                  販売中
+                  
+                  <%= f.radio_button :is_active, :false %>
+                  販売停止中
+                </td>
+              </tr>
+            </table>
+            <%= f.submit "新規登録" %>
+          <% end %>
+    </div>
+  </div>
+</div>
