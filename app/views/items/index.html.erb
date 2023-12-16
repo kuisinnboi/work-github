@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h2>商品一覧</h2>
+    <p>全<%= items.count %>件</p>
+  </div>
+  
+  <div class="row">
+    <div class="col">
+      <% @items.each do |items| %>
+        <div>
+          <%= link_to image_tag items_image, size:'50x50' %>
+          <%= link_to name %>
+          <%= link_to price %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <%= will_paginate @items, :previous_label => ' &lt 前へ', :next_label => '次へ &gt' %>
+</div>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   devise_for :admin, controllers: {
@@ -38,12 +38,12 @@ Rails.application.routes.draw do
   end
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-
   namespace :admin do
       resources :sessions, only: [:new, :create, :destroy]
       resources :homes, only: [:top]
       resources :items, only: [:show, :index, :new, :create, :edit, :update]
       resources :genres, only: [:edit, :create,:index, :update]
+
 
       resources :customers, only: [:show, :edit, :update, :index]
       resources :orders, only: [:show, :update]
@@ -53,3 +53,10 @@ Rails.application.routes.draw do
 
 
 end
+
+      resources :customers, only: [:show, :edit, :update, :index]
+      resources :orders, only: [:show, :update]
+      resources :order_details, only: [:update]
+  end
+end
+
