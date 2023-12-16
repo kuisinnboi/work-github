@@ -11,22 +11,35 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-    <li>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-    </li>
-    <% elsif admin_signed_in? %>
-    <li>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-    </li>
-    <% else %>
-    <li>
-      <%= link_to "新規登録", new_customer_registration_path %>
-    </li>
-    <li>
-      <%= link_to "ログイン", new_customer_session_path %>
-    </li>
-    <% end %>
+   <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+     <div class="container-fluid">
+       <a class="navbar-brand" href="#">ながのCAKE</a>
+       
+       <div class="collapse navbar-collapse" id="navbarNav">
+         <ul class="navbar-nav">
+          <% if customer_signed_in? %>
+           <li class="nav-item">
+             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+           </li>
+          <% elsif admin_signed_in? %>
+           <li class="nav-item">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+           </li>
+          <% else %>
+           <li class="nav-item">
+            <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item">
+             <%= link_to "ログイン", new_customer_session_path, class: "nav-link" %>
+           </li>
+           <% end %>
+         </ul>
+       </div>
+     </div>
+    </nav>
+   </header>
+
   <%= yield %>
   </body>
 </html>
