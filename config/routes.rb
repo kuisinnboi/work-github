@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/edit'
+  end
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -42,7 +46,7 @@ Rails.application.routes.draw do
       resources :sessions, only: [:new, :create, :destroy]
       resources :homes, only: [:top]
       resources :items, only: [:show, :index, :new, :create, :edit, :update]
-      resources :genres, only: [:edit, :create,:index, :update]
+      resources :genres, only: [:edit, :create,:index, :update,:new]
 
 
       resources :customers, only: [:show, :edit, :update, :index]
