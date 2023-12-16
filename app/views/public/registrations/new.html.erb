@@ -1,29 +1,125 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  
+  <div class="row">
+    <h2>新規会員登録</h2>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  
+  <div class="row">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
+    
+    <table class="teble">
+      <tr>
+        <td>名前</td>
+        <td>
+          <div class="field">
+            <%= f.label :last_name, "(姓)" %>
+            <%= f.text_field :last_name, autofocus: true, class: "last_name" %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :first_name, "(名)" %>
+            <%= f.text_field :first_name, autofocus: true, class: "first_name" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>フリガナ</td>
+        <td>
+          <div class="field">
+            <%= f.label :last_name_kana, "(セイ)" %>
+            <%= f.text_field :last_name_kana, autofocus: true, class: "last_name_kana" %>
+          </div>
+        </td>
+        <td>
+          <div class="field">
+            <%= f.label :first_name_kana, "(メイ)" %>
+            <%= f.text_field :first_name_kana, autofocus: true, class: "first_name_kana" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>メールアドレス</td>
+        <td>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, class: "email" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>郵便番号(ハイフンなし)</td>
+        <td>
+          <div class="field">
+            <%= f.label :post_code %>
+            <%= f.text_field :post_code, autofocus: true, class: "post_code" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>住所</td>
+        <td>
+          <div class="field">
+            <%= f.label :address %>
+            <%= f.email_field :address, autofocus: true, class: "address" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>電話番号(ハイフンなし)</td>
+        <td>
+          <div class="field">
+            <%= f.label :telephone_number %>
+            <%= f.email_field :telephone_number, autofocus: true, class: "telephone_number" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>パスワード(6文字以上)</td>
+        <td>
+          <div class="field">
+            <%= f.label :password %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, autocomplete: "new-password" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>パスワード(確認用)</td>
+        <td>
+          <div class="field">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <div class="actions">
+            <%= f.submit "新規登録" class="btn btn-secondary text-white" %>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  
+  <div class="row">
+    <h2>既に登録済みの方</h2>
+    <div class="col">
+      <%= 
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+ 
+  
 
-<%= render "publics/shared/links" %>
+  
+
+
+<%= render "public/shared/links" %>
