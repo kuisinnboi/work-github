@@ -1,9 +1,11 @@
 
-<div class='container px-5 px-sm-0'>
+<div class='container px-5 px-sm-0' style="padding: 40px;">
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
-      <h2>商品編集</h2>
-          <%= form_with model: @item do |f| %>
+      <div style="background-color: #fff;">
+        <h2>商品情報編集</h2>
+      </div>
+          <%= form_with model: @item, url: admin_item_path do |f| %>
             <% if @item.errors.any? %>
               <div class="alert alert-warning">
                 <ul>
@@ -13,7 +15,7 @@
                 </ul>
               </div>
             <% end %>
-            <table class="table_items_new">
+            <table class="table" style="background-color: #fff;">
               <tr>
                 <td>
                   商品画像
@@ -61,13 +63,13 @@
                 <td>
                   <%= f.radio_button :is_active, :true %>
                   販売中
-                  
+
                   <%= f.radio_button :is_active, :false %>
                   販売停止中
                 </td>
               </tr>
             </table>
-            <%= f.submit "編集登録" %>
+            <%= f.submit "編集登録", class: "btn btn-sm btn-success" %>
           <% end %>
     </div>
   </div>
