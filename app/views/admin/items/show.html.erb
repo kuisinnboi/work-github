@@ -1,36 +1,65 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-10 offset-md-1'>
+    <div class='col-md-5 offset-md-1'>
       <h2>商品詳細</h2>
       <div>
-        <%= image_tag @item.get_item_image %>
+        <% if @item.item_image.attached? %>
+          <%= image_tag @item.item_image, size: "200x200" %>
+        <% else %>
+          <%= image_tag 'AdobeStock_123378894_Preview.jpeg', size: "400x400" %>
+        <% end %>
       </div>
-      <span>
-        <h4>商品名</h4>
-        <span>
-          <%= @item.name %>
-        </span>
-        <h4>商品説明</h4>
-        <span>
-          <%= @item.introduction %>
-        </span>
-        <h4>税抜き価格</h4>
-        <span>
-          <%= @item.price %>
-        </span>
-        <h4>ジャンル</h4>
-        <span>
-          <%= @item.genre.name %>
-        </span>
-        <h4>ステータス</h4>
-        <span>
-          <% if item.isactive %>
-            販売中
-          <% else %>
-            販売停止中
-          <% end %>
-        </span>
-      </span>
+    </div>
+    <div class="col-md-5">
+      
+      <table class="">
+        <tr>
+          <td>
+            <h8>商品名</h8>
+          </td>
+          <td>
+            <%= @item.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h8>商品説明</h8>
+          </td>
+          <td>
+            <%= @item.introduction %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h8>税抜き価格</h8>
+          </td>
+          <td>
+            <%= @item.price %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h8>ジャンル</h8>
+          </td>
+          <td>
+            <%= @item.genre.name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h8>ステータス</h8>
+          </td>
+          <td>
+            <% if @item.is_active %>
+              販売中
+            <% else %>
+              販売停止中
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+      
     </div>
   </div>
 </div>

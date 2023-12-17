@@ -43,7 +43,7 @@
                   ジャンル
                 </td>
                 <td>
-                  <%#= f.collection_select(:genre_id, @genre, :id, :name) %>
+                  <%= f.collection_select(:genre_id, @genre, :id, :name) %>
                 </td>
               </tr>
               <tr>
@@ -67,7 +67,7 @@
                 </td>
               </tr>
             </table>
-            <%= f.submit "新規登録" %>
+            <%= f.submit "編集登録" %>
           <% end %>
     </div>
   </div>

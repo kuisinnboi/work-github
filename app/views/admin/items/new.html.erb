@@ -3,7 +3,7 @@
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
       <h2>商品新規登録</h2>
-          <%= form_with model: @item do |f| %>
+          <%= form_with model: @item, url: admin_items_path do |f| %>
             <% if @item.errors.any? %>
               <div class="alert alert-warning">
                 <ul>
@@ -43,7 +43,7 @@
                   ジャンル
                 </td>
                 <td>
-                  <%#= f.collection_select(:genre_id, @genre, :id, :name) %>
+                  <%= f.collection_select(:genre_id, @genre, :id, :name) %>
                 </td>
               </tr>
               <tr>
