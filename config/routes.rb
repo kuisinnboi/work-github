@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    get 'homes/top'
+  end
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -40,6 +43,7 @@ Rails.application.routes.draw do
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
   namespace :admin do
+      root to: 'homes#top'
       resources :sessions, only: [:new, :create, :destroy]
       resources :homes, only: [:top]
       resources :items, only: [:show, :index, :new, :create, :edit, :update]
