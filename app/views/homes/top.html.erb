@@ -3,10 +3,11 @@
   <div class="row">
     <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
     <div class="col text-center">
-      <p>ようこそ、ながのCAKEへ！</p>
-      <p>このサイトは、ケーキ販売のECサイトになります。</p>
-      <p>会員でない方も商品の閲覧はできますが、</p>
-      <p>購入には会員登録が必要になります。</p>
+      <p>ようこそ、ながのCAKEへ！<br />
+         このサイトは、ケーキ販売のECサイトになります。<br />
+         会員でない方も商品の閲覧はできますが、<br />
+         購入には会員登録が必要になります。
+      </p>
     </div>
   </div>
 
@@ -15,14 +16,17 @@
     <div class="mx-auto col-lg-4">
       <% @items.each do |items| %>
       <div>
-        <%= link_to items_show_path do %>
+        <%= link_to item_path do %>
           <%= image_tag items_image, size:'100x100' %>
           <% end %>
-        <%= link_to name, items_show_path %>
-        <%= link_to price, items_show_path %>
+        <%= link_to name, item_path %>
+        <%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %>
       </div>
       <% end %>
     </div>
+  </div>
+
+  <div class="row">
     <%= link_to "全ての商品を見る", items_path %>
   </div>
 </div>

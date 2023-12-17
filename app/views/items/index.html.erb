@@ -1,16 +1,18 @@
 <div class="container">
   <div class="row">
     <h2>商品一覧</h2>
-    <p>全<%= items.count %>件</p>
+    <p>全<%= @items.count %>件</p>
   </div>
-  
+
   <div class="row">
     <div class="col">
       <% @items.each do |items| %>
         <div>
-          <%= link_to image_tag items_image, size:'50x50' %>
-          <%= link_to name %>
-          <%= link_to price %>
+          <%= link_to item_path do %>
+            <%= image_tag items_image, size:'100x100' %>
+          <% end %>
+          <%= link_to name, item_path %>
+          <%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %>
         </div>
       <% end %>
     </div>
