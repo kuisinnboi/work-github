@@ -21,9 +21,6 @@
        <div class="collapse navbar-collapse " id="navbarNav" >
          <ul class="navbar-nav ">
           <% if customer_signed_in? %>
-           <h3>
-            <%= customer.name %>
-           </h3>
            <li class="nav-item text-right">
              <%= link_to "マイページ", customer_path, class: "nav-link" %>
            </li>
