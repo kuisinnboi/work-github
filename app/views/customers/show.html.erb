@@ -1,0 +1,33 @@
+<div class="container bg-white my-5">
+  <div class="">
+    <h3>マイページ</h3>
+    <div class="">
+      <div class="fw-bold">
+        <h4>登録情報</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success text-white edit_customer_#{@customer.id}" %>
+      </div>
+      
+    </div>
+    
+    <div class="">
+      <div class="fw-bold">
+        <h4>配送先</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "一覧を見る", addresses_path(@addresses), class: "btn btn-primary text-white addresses_#{@addresseses.id}" %>
+      </div>
+      
+    </div>
+    <div class="">
+      <div class="fw-bold">
+        <h4>注文履歴</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "一覧を見る", orders_path(@orders), class: "btn btn-primary text-white orders_#{@orders.id}" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
