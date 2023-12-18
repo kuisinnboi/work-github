@@ -2,10 +2,7 @@
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
       <div class="d-flex justify-content-between" style="background-color: #fff; padding: 5px;">
-        <h2 class="d-flex justify-content-start" style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">商品一覧</h2>
-        <div style="width: fit-content; color: #D76F6A;">
-          <%= link_to "＋", new_admin_item_path, class: "btn btn-lg btn-outline-dark rounded-circle p-0", style: "width:2rem;height:2rem;" %>
-        </div>
+        <h2 class="d-flex justify-content-start" style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">お客様一覧</h2>
       </div>
 
       <table class="table" style="background-color: #fff;">
@@ -14,27 +11,26 @@
             <%= flash[:notice] %>
           </tr>
           <tr>
-            <th>商品ID</th>
-            <th>商品名</th>
-            <th>税抜き価格</th>
-            <th>ジャンル</th>
+            <th>会員ID</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
             <th>ステータス</th>
           </tr>
         </thead>
 
-        <% @items.each do |item| %>
+        <% @customers.each do |customer| %>
           <tr>
             <td>
-              <%= item.id %>
+              <%= customer.id %>
             </td>
-            <td><%= link_to item.name,admin_item_path(item) %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
+            <td><%= link_to "#{customer.last_name}#{customer.first_name}",admin_customer_path(customer) %></td>
+
+            <td><%= customer.email %></td>
             <td>
-              <% if item.is_active %>
-                <span class="text-success">販売中</span>
+              <% if customer.is_active %>
+                <div class="text-success">有効</div>
               <% else %>
-                販売停止中
+                退会
               <% end %>
             </td>
           </tr>
@@ -47,7 +43,6 @@
               <% (1..@total_pages).each do |page| %>
                 <% if page == @current_page %>
                   <%= page %>
-                
                 <% else %>
                   <%= link_to page, admin_genres_path(page: page) %>
                 <% end %>

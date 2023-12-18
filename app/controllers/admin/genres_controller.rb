@@ -1,6 +1,12 @@
 class Admin::GenresController < ApplicationController
   def index
-    @genres = Genre.all
+    records_per_page = 10
+    current_page = params[:page].to_i
+    current_page = 1 if current_page.zero?
+    offset = (current_page - 1) * records_per_page
+    @current_page = current_page
+    @genres = Genre.offset(offset).limit(records_per_page)
+    @total_pages = (Genre.count.to_f / records_per_page).ceil
     @genre = Genre.new
   end
 

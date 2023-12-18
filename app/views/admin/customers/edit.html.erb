@@ -1,0 +1,102 @@
+<div class='container px-5 px-sm-0' style="padding: 40px;">
+  <div class='row'>
+    <div class="col-md-10 ">
+      <div class="d-flex justify-content-between">
+        <h2 style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">お客様情報編集</h2>
+        <div>
+          <%= link_to "一覧に戻る", admin_customers_path, class: "btn btn-sm btn-primary" %>
+        </div>
+      </div>
+      <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
+        <% if @customer.errors.any? %>
+          <div class="alert alert-warning">
+            <ul>
+              <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+                <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <table class="table" style="margin-top: 20px; background-color: #fff;">
+          <tr>
+            <%= flash[:notice] %>
+          </tr>
+          <tr>
+            <td>
+              <h8>会員ID</h8>
+            </td>
+            <td>
+              <%= @customer.id %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>氏名</h8>
+            </td>
+            <td>
+              <%= f.text_field :last_name ,:placeholder => "姓" %>  <%= f.text_field :first_name ,:placeholder => "名" %> 
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>フリガナ</h8>
+            </td>
+            <td>
+              <%= f.text_field :last_name_kana ,:placeholder => "セイ" %>  <%= f.text_field :first_name_kana ,:placeholder => "メイ" %> 
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>郵便番号</h8>
+            </td>
+            <td>
+              <%= f.text_field :post_code, maxlength: 7, pattern: "\\d*" ,:placeholder => "000000" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>住所</h8>
+            </td>
+            <td>
+              <%= f.text_field :address ,:placeholder => "住所" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>電話番号</h8>
+            </td>
+            <td>
+              <%= f.text_field :telephone_number, maxlength: 11, pattern: "\\d*" ,:placeholder => "000000000" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>メールアドレス</h8>
+            </td>
+            <td>
+              <%= f.email_field :email ,:placeholder => "メールアドレス" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h8>会員ステータス</h8>
+            </td>
+            <td>
+              <%= f.radio_button :is_active, :true %>
+              有効
+
+              <%= f.radio_button :is_active, :false %>
+              退会
+            </td>
+          </tr>
+        </table>
+        <div class="m-auto text-center">
+              <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+        </div>
+      <% end %>
+      <div class="text-right">
+        <%= link_to "注文一覧を見る", admin_order_path(@customer), class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -41,7 +41,7 @@ class Admin::ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to admin_item_path(@item), notice: "update successfully"
     else
-      render "edit"
+      render edit_admin_item_path(@item)
     end
   end
 
