@@ -1,11 +1,11 @@
 class CustomersController < ApplicationController
-  before_action :authenticate_user!
-  
+  before_action :authenticate_customer!
+  before_action :is_matching_login_customer
+
   def show
-    @customer = current_user
-    @addresses = 
-    @orders = 
-    
+    @customer = Customer.find(params[:id])
+    @addresses = @customer.addresses
+    @orders = @customer.orders
   end
 
   def edit
@@ -19,4 +19,13 @@ class CustomersController < ApplicationController
 
   def withdraw
   end
+
+  private
+
+  def is_matching_login_customer
+    unless current_customer.id.to_s == params[:id]
+      redirect_to root_path, alert: "アクセス権限がありません"
+  　end
+  end
+end
 end
