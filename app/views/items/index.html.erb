@@ -1,18 +1,22 @@
-<div class="container">
-  <div class="row">
-    <h2>商品一覧</h2>
-    <p>全<%= @items.count %>件</p>
+<div class="container overflow-hidden">
+  <div class="row m-5">
+    <div class="col d-flex align-items-end">
+      <h2>商品一覧</h2>
+      <p>(全<%= @items.count %>件)</p>
+    </div>
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col col-lg-4 grid gap-3 mx-auto">
       <% @items.each do |items| %>
         <div>
-          <%= link_to item_path do %>
-            <%= image_tag items_image, size:'100x100' %>
-          <% end %>
-          <%= link_to name, item_path %>
-          <%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %>
+          <div>
+            <%= link_to item_path do %>
+              <%= image_tag items_image, size:'100x100' %>
+            <% end %>
+          </div>
+          <div><%= link_to name, item_path %></div>
+          <div><%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %></div>
         </div>
       <% end %>
     </div>
