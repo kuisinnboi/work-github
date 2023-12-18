@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
 
+  get 'orders/new'
+  get 'orders/show'
+  get 'orders/index'
+  get 'orders/complete'
+  get 'orders/confirm'
+  namespace :admin do
+    get 'orders/show'
+  end
   namespace :admin do
     get 'homes/top'
   end
