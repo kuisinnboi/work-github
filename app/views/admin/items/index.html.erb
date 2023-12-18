@@ -1,14 +1,18 @@
 <div class='container px-5 px-sm-0' style="padding: 40px;">
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
-      <div class="d-flex justify-content-between" style="background-color: #fff;">
-        <h2 class="d-flex justify-content-start" style="width: fit-content;">商品一覧</h2>
-        <div class="d-flex justify-content-between" style="width: fit-content;">
+      <div class="d-flex justify-content-between" style="background-color: #fff; padding: 5px;">
+        <h2 class="d-flex justify-content-start" style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">商品一覧</h2>
+        <div style="width: fit-content; color: #D76F6A;">
           <%= link_to "＋", new_admin_item_path, class: "btn btn-lg btn-outline-dark rounded-circle p-0", style: "width:2rem;height:2rem;" %>
         </div>
       </div>
+
       <table class="table" style="background-color: #fff;">
         <thead>
+          <tr>
+            <%= flash[:notice] %>
+          </tr>
           <tr>
             <th>商品ID</th>
             <th>商品名</th>

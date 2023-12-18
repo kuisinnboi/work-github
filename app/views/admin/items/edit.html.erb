@@ -2,10 +2,10 @@
 <div class='container px-5 px-sm-0' style="padding: 40px;">
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
-      <div style="background-color: #fff;">
-        <h2>商品情報編集</h2>
+      <div>
+        <h2 style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">商品情報編集</h2>
       </div>
-          <%= form_with model: @item, url: admin_item_path do |f| %>
+          <%= form_with model: @item, url: admin_item_path(@item) do |f| %>
             <% if @item.errors.any? %>
               <div class="alert alert-warning">
                 <ul>
@@ -69,8 +69,14 @@
                 </td>
               </tr>
             </table>
-            <%= f.submit "編集登録", class: "btn btn-sm btn-success" %>
+            <div class="mx-auto text-center row">
+              <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+            </div>
           <% end %>
+          <div class="col-2">
+            <button class="btn btn-sm btn-primary" onclick="history.back(-1)">戻る</button>
+          </div>
+          
     </div>
   </div>
 </div>

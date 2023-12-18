@@ -12,23 +12,54 @@
 
 
    <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark" style="background-color: #995500;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark justify-content-between" style="background-color: #995500;">
      <div class="container-fluid">
        <a class="navbar-brand" href="/">ながのCAKE</a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon" style="color: blue;"></span>
        </button>
-       <div class="collapse navbar-collapse" id="navbarNav" >
+       <div class="collapse navbar-collapse " id="navbarNav" >
          <ul class="navbar-nav ">
           <% if customer_signed_in? %>
+           <h3>
+            <%= customer.name %>
+           </h3>
+           <li class="nav-item text-right">
+             <%= link_to "マイページ", customer_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "商品一覧", items_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "カート", cart_items_path, class: "nav-link" %>
+           </li>
            <li class="nav-item text-right">
              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
            </li>
           <% elsif admin_signed_in? %>
+
+           <li class="nav-item text-right">
+             <%= link_to "商品一覧", admin_items_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "会員一覧", admin_customers_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "注文履歴一覧", admin_orders_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "ジャンル一覧", admin_genres_path, class: "nav-link" %>
+           </li>
            <li class="nav-item text-right">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
            </li>
           <% else %>
+           <li class="nav-item text-right">
+             <%= link_to "About", about_path, class: "nav-link" %>
+           </li>
+           <li class="nav-item text-right">
+             <%= link_to "商品一覧", items_path, class: "nav-link" %>
+           </li>
            <li class="nav-item text-right">
             <%= link_to "新規登録", new_customer_registration_path, class: "nav-link" %>
            </li>
@@ -41,10 +72,10 @@
      </div>
     </nav>
    </header>
-   <body style="background: repeating-linear-gradient(90deg, #FFFAF0, #FFFAF0 20px, #fff 20px, #fff 40px);">
+   <body style="margin-bottom: 60px; background: repeating-linear-gradient(90deg, #FFFAF0, #FFFAF0 20px, #fff 20px, #fff 40px);">
     <%= yield %>
     </body>
-   <footer class="fixed-bottom ">
+   <footer class="fixed-bottom">
     <nav class="mt-auto navbar navbar-expand-lg bg-body-tertiary" style="height:50px; background-color: #995500;"></nav>
    </footer>
 
