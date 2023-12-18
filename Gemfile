@@ -59,3 +59,4 @@ gem 'devise'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem "enum_help"
