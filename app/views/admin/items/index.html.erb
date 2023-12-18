@@ -21,6 +21,7 @@
             <th>ステータス</th>
           </tr>
         </thead>
+
         <% @items.each do |item| %>
           <tr>
             <td>
@@ -39,6 +40,15 @@
           </tr>
         <% end %>
       </table>
+      <div class="pagination">
+        <% (1..@total_pages).each do |page| %>
+          <% if page == @current_page %>
+            <%= page %>
+          <% else %>
+            <%= link_to page, admin_items_path(page: page) %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

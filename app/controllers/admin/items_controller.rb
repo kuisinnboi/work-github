@@ -1,6 +1,12 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    records_per_page = 10
+    current_page = params[:page].to_i
+    current_page = 1 if current_page.zero?
+    offset = (current_page - 1) * records_per_page
+    @current_page = current_page
+    @items = Item.offset(offset).limit(records_per_page)
+    @total_pages = (Item.count.to_f / records_per_page).ceil
   end
 
   def new
