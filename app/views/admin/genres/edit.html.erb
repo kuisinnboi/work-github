@@ -1,2 +1,18 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<div class='container px-5 px-sm-0' style="padding: 40px;">
+  <div class='row'>
+    <div class='col-md-10 offset-md-1'>
+      <div style=" margin-bottom-10px;">
+        <h2 style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">ジャンル一覧・追加</h2>
+      </div>
+      <div class="text-right" style="background-color: #fff; padding-top: 5px;">
+        <div>
+          <%= form_with model: @genre, url: admin_genre_path do |f| %>
+            <%= f.label :name ,"ジャンル名" %>
+            <%= f.text_field :name ,:placeholder => "ジャンル名" %>
+            <%= f.submit "変更を保存" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

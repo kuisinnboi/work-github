@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       root to: 'homes#top'
       resources :sessions, only: [:new, :create, :destroy]
       resources :homes, only: [:top]
-      resources :items, only: [:show, :index, :new, :create, :edit, :update]
+      resources :items, only: [:show, :index, :new, :create, :edit, :update, :destroy]
       resources :genres, only: [:edit, :create,:index, :update,:new]
 
 
