@@ -26,7 +26,6 @@ class CustomersController < ApplicationController
   def is_matching_login_customer
     unless current_customer.id.to_s == params[:id]
       redirect_to root_path, alert: "アクセス権限がありません"
-  　end
+    end
   end
-end
 end
