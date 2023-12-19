@@ -11,12 +11,13 @@
       <% @items.each do |items| %>
         <div>
           <div>
-            <%= link_to item_path do %>
-              <%= image_tag items_image, size:'100x100' %>
+            <%= link_to item_path(items.id) do %>
+              <%= image_tag items.item_image, size:'100x100' %>
             <% end %>
           </div>
-          <div><%= link_to name, item_path %></div>
-          <div><%= link_to "￥" + add_tax_price.to_s(:delimited), item_path %></div>
+          <div><%= link_to items.name, item_path(items.id) %></div>
+          <div>￥<%= (items.price * 1.1).floor %></div>
+          <!--<div><%#= link_to "￥" + add_tax_price.to_s(:delimited), item_path %></div>-->
         </div>
       <% end %>
     </div>
