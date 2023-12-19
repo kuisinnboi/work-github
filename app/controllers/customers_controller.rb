@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :is_matching_login_customer
 
   def show
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
     @addresses = @customer.addresses
     @orders = @customer.orders
   end
