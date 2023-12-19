@@ -25,6 +25,7 @@
             <td>
               <h8>会員ID</h8>
             </td>
+            <td></td>
             <td>
               <%= @customer.id %>
             </td>
@@ -34,7 +35,10 @@
               <h8>氏名</h8>
             </td>
             <td>
-              <%= f.text_field :last_name ,:placeholder => "姓" %>  <%= f.text_field :first_name ,:placeholder => "名" %> 
+              <%= f.label :last_name, "< 姓 >" %>
+            </td>
+            <td>
+              <%= f.text_field :last_name ,:placeholder => "姓" %>   <%= f.label :last_name, "< 名 >" %> <%= f.text_field :first_name ,:placeholder => "名" %>
             </td>
           </tr>
           <tr>
@@ -42,13 +46,17 @@
               <h8>フリガナ</h8>
             </td>
             <td>
-              <%= f.text_field :last_name_kana ,:placeholder => "セイ" %>  <%= f.text_field :first_name_kana ,:placeholder => "メイ" %> 
+              <%= f.label :last_name_kana, "<セイ>" %>
+            </td>
+            <td>
+              <%= f.text_field :last_name_kana ,:placeholder => "セイ" %>   <%= f.label :first_name_kana, "<メイ>" %> <%= f.text_field :first_name_kana ,:placeholder => "メイ" %>
             </td>
           </tr>
           <tr>
             <td>
               <h8>郵便番号</h8>
             </td>
+            <td></td>
             <td>
               <%= f.text_field :post_code, maxlength: 7, pattern: "\\d*" ,:placeholder => "000000" %>
             </td>
@@ -57,14 +65,16 @@
             <td>
               <h8>住所</h8>
             </td>
+            <td></td>
             <td>
-              <%= f.text_field :address ,:placeholder => "住所" %>
+              <%= f.text_field :address ,:placeholder => "住所" ,size: 60 %>
             </td>
           </tr>
           <tr>
             <td>
               <h8>電話番号</h8>
             </td>
+            <td></td>
             <td>
               <%= f.text_field :telephone_number, maxlength: 11, pattern: "\\d*" ,:placeholder => "000000000" %>
             </td>
@@ -73,6 +83,7 @@
             <td>
               <h8>メールアドレス</h8>
             </td>
+            <td></td>
             <td>
               <%= f.email_field :email ,:placeholder => "メールアドレス" %>
             </td>
@@ -81,6 +92,7 @@
             <td>
               <h8>会員ステータス</h8>
             </td>
+            <td></td>
             <td>
               <%= f.radio_button :is_active, :true %>
               有効
