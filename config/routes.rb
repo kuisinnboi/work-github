@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'customers/update'
   get 'customers/unsubscribe'
   get 'customers/withdraw'
-  
+
   get 'orders/new'
   get 'orders/show'
   get 'orders/index'
@@ -67,10 +67,13 @@ Rails.application.routes.draw do
 
 
       resources :customers, only: [:show, :edit, :update, :index]
-      resources :orders, only: [:show, :update]
-      resources :order_details, only: [:update]
+      resources :orders, only: [:show, :update] do
+        member do
+          resources :order_details, only: [:update]
+        end
 
       end
+    end
 
 
 end
