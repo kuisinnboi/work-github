@@ -3,10 +3,10 @@
     <div class="mx-auto col-lg-2 center-block">
       <table class='table'>
         <tr>
-          <td><%= image_tag @item.items_image,size:"200x200" %></td>
+          <td><%= image_tag @item.item_image, size:"200x200" %></td>
           <td><%= @item.name %></td>
           <td><%= @item.introduction %></td>
-          <td>￥<%= @item.add_tax_price.to_s(:delimited) %>（税込）</td>
+          <td>￥<%= (@item.price * 1.1).floor %>（税込）</td>
         </tr>
       </table>
     </div>
@@ -14,9 +14,9 @@
     <div class="mx-auto col-lg-2">
       <table class="table">
         <tr>
-          <%= form__with model: @cart_items do |f| %>
+          <%= form_with model: @cart_items do |f| %>
           <td><%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"]], include_blank: "個数選択" %></td>
-          <td><%= f.submit "カートに入れる" class="btn btn-secondary text-white" %></td>
+          <td><%= f.submit "カートに入れる", class: "btn btn-secondary text-white" %></td>
           <% end %>
         </tr>
       </table>
