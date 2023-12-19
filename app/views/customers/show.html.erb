@@ -1,0 +1,60 @@
+<div class="container bg-white my-5">
+  <div class="">
+    <h3>マイページ</h3>
+    <div class="">
+      <div class="fw-bold">
+        <h4>登録情報</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success text-white edit_customer_#{@customer.id}" %>
+      </div>
+      <table class="table">
+        <% @customer.each do |customer| %>
+        <tr>
+          <td>氏名</td>
+          <td><%= customer.last_name %><%= customer.first_name %></td>
+        </tr>
+        <tr>
+          <td>カナ</td>
+          <td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td>郵便番号</td>
+          <td><%= customer.post_code %></td>
+        </tr>
+        <tr>
+          <td>住所</td>
+          <td><%= customer.address %></td>
+        </tr>
+        <tr>
+          <td>電話番号</td>
+          <td><%= customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td>メールアドレス</td>
+          <td><%= customer.email %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    
+    <div class="">
+      <div class="fw-bold">
+        <h4>配送先</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "一覧を見る", addresses_path(@addresses), class: "btn btn-primary text-white addresses_#{@addresseses.id}" %>
+      </div>
+      
+    </div>
+    <div class="">
+      <div class="fw-bold">
+        <h4>注文履歴</h4>
+      </div>
+      <div class="actions">
+        <%= link_to "一覧を見る", orders_path(@orders), class: "btn btn-primary text-white orders_#{@orders.id}" %>
+      </div>
+      
+    </div>
+  </div>
+</div>
