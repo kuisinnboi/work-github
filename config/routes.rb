@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get 'orders/new'
   get 'orders/show'
   get 'orders/index'
-  get 'orders/complete'
-  get 'orders/confirm'
+  post '/orders/complete', to: 'orders#complete', as: 'orders_complete'
+   post '/orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
   namespace :admin do
     get 'orders/show'
   end
