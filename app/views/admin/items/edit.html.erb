@@ -69,14 +69,14 @@
                 </td>
               </tr>
             </table>
-            <div class="mx-auto text-center row">
+            <div class="m-auto text-center">
               <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
             </div>
           <% end %>
-          <div class="col-2">
-            <button class="btn btn-sm btn-primary" onclick="history.back(-1)">戻る</button>
+          <div class="m-auto text-right">
+            <%= link_to "戻る", admin_item_path(@item), class: "btn btn-sm btn-primary" %>
           </div>
-          
+
     </div>
   </div>
 </div>
