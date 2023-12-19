@@ -7,21 +7,21 @@
       <%= render "public/shared/error_messages", resource: resource %>
 
       <div class="row">
-        <div class="col">名前</div>
+        <div class="col"></div>
         <div class="field col">
-          <%= f.label :last_name, "(姓)",class: "col-3" %>
-          <%= f.text_field :last_name, autofocus: true, class: "last_name", placeholder:"令和" %>
+
+
         </div>
         <div class="field col">
-          <%= f.label :first_name, "(名)",class: "col-3" %>
-          <%= f.text_field :first_name, autofocus: true, class: "first_name", placeholder:"道子" %>
+
+
         </div>
       </div>
       <div class="row">
-        <div class="col">フリガナ</div>
+        <div class="col"></div>
         <div class="field col">
-          <%= f.label :last_name_kana, "(セイ)",class: "col-3" %>
-          <%= f.text_field :last_name_kana, autofocus: true, class: "last_name_kana", placeholder:"レイワ" %>
+
+
         </div>
         <div class="field col">
           <%= f.label :first_name_kana, "(メイ)",class: "col-3" %>
@@ -30,6 +30,22 @@
       </div>
 
       <table class="teble">
+        <tr>
+          <td><%= f.label :last_name, "名前" %></td>
+          <td>(姓)</td>
+          <td>
+            <%= f.text_field :last_name, autofocus: true, class: "last_name", placeholder:"令和" %>
+            <%= f.label :first_name, "(名)",class: "col-3" %>
+            <%= f.text_field :first_name, autofocus: true, class: "first_name", placeholder:"道子" %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= f.label :last_name_kana, "フリガナ",class: "col-3" %></td>
+          <td>(セイ)</td>
+          <td>
+            <%= f.text_field :last_name_kana, autofocus: true, class: "last_name_kana", placeholder:"レイワ" %>
+          </td>
+        </tr>
         <tr>
           <td><%= f.label :email, "メールアドレス" %></td>
           <td>

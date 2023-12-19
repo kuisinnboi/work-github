@@ -5,8 +5,7 @@
       <p>会員の方はこちらからログイン</p>
     </div>
     <div class="center-block mx-auto">
-      <%#= form_for(resource, as: resource_name, url: new_session_path(resource_name)) do |f| %>
-      <%= form_with model: @customer, url: customer_session_path(resource_name), local: true do |f| %>
+      <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
         <table class="teble mt-auto">
           <tr>
             <td><%= f.label :email, "メールアドレス" %></td>
