@@ -9,32 +9,32 @@
         <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-success text-white edit_customer_#{@customer.id}" %>
       </div>
       <table class="table">
-        <% @customer.each do |customer| %>
+        <%# @customer.each do |customer| %>
         <tr>
           <td>氏名</td>
-          <td><%= customer.last_name %><%= customer.first_name %></td>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
         </tr>
         <tr>
           <td>カナ</td>
-          <td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
         </tr>
         <tr>
           <td>郵便番号</td>
-          <td><%= customer.post_code %></td>
+          <td><%= @customer.post_code %></td>
         </tr>
         <tr>
           <td>住所</td>
-          <td><%= customer.address %></td>
+          <td><%= @customer.address %></td>
         </tr>
         <tr>
           <td>電話番号</td>
-          <td><%= customer.telephone_number %></td>
+          <td><%= @customer.telephone_number %></td>
         </tr>
         <tr>
           <td>メールアドレス</td>
-          <td><%= customer.email %></td>
+          <td><%= @customer.email %></td>
         </tr>
-        <% end %>
+        <%# end %>
       </table>
     </div>
     
@@ -43,7 +43,8 @@
         <h4>配送先</h4>
       </div>
       <div class="actions">
-        <%= link_to "一覧を見る", addresses_path(@addresses), class: "btn btn-primary text-white addresses_#{@addresseses.id}" %>
+        <%= link_to "一覧を見る", addresses_path, class: "btn btn-primary text-white" %>
+        <%#= link_to "一覧を見る", addresses_path(@addresses), class: "btn btn-primary text-white addresses_#{@addresseses.id}" %>
       </div>
       
     </div>
@@ -52,7 +53,8 @@
         <h4>注文履歴</h4>
       </div>
       <div class="actions">
-        <%= link_to "一覧を見る", orders_path(@orders), class: "btn btn-primary text-white orders_#{@orders.id}" %>
+        <%= link_to "一覧を見る", orders_path, class: "btn btn-primary text-white" %>
+        <%#= link_to "一覧を見る", orders_path(@orders), class: "btn btn-primary text-white orders_#{@orders.id}" %>
       </div>
       
     </div>
