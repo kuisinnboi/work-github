@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get 'customers/update'
   get 'customers/unsubscribe'
   get 'customers/withdraw'
-
+  
   get 'orders/new'
   get 'orders/show'
   get 'orders/index'
