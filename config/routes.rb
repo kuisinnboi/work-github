@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'orders/new'
-  get 'orders/show'
-  get 'orders/index'
-  post '/orders/complete', to: 'orders#complete', as: 'orders_complete'
-   post '/orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -23,6 +11,26 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+
+
+  get 'customers/show'
+  get 'customers/edit'
+  get 'customers/update'
+  get 'customers/unsubscribe'
+  get 'customers/withdraw'
+  
+  get 'orders/new'
+  get 'orders/show'
+  get 'orders/index'
+  post '/orders/complete', to: 'orders#complete', as: 'orders_complete'
+   post '/orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
+  namespace :admin do
+    get 'orders/show'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
 
   root to: "homes#top"
   get '/homes/about', to:  'homes#about', as: 'about'

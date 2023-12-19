@@ -70,10 +70,12 @@
                 </td>
               </tr>
             </table>
-            <%= f.submit "新規登録", class: "btn btn-sm btn-success"%>
+            <div class="m-auto text-center">
+              <%= f.submit "新規登録", class: "btn btn-sm btn-success"%>
+            </div>
           <% end %>
-            <div class="col-2">
-              <button class="btn btn-sm btn-primary" onclick="history.back(-1)">戻る</button>
+            <div class="m-auto text-right">
+              <%= link_to "戻る", admin_items_path, class: "btn btn-sm btn-primary" %>
             </div>
           </div>
         </div>

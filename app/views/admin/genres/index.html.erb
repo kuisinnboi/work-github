@@ -33,6 +33,22 @@
           </tr>
         <% end %>
       </table>
+      <% if @total_pages > 1 %>
+        <div class="m-auto">
+          <div class="pagination d-flex justify-content-center">
+            <div>
+              <% (1..@total_pages).each do |page| %>
+                <% if page == @current_page %>
+                  <%= page %>
+                
+                <% else %>
+                  <%= link_to page, admin_genres_path(page: page) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
