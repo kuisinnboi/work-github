@@ -23,25 +23,47 @@ class OrdersController < ApplicationController
         unless params[:order][:registered_address_id] == ""
           selected = Address.find(params[:order][:registered_address_id])
           @selected_address = selected.post_code + " " + selected.address + " " + selected.name
-	 else
-	   render :new
-	 end
-      when "new_address"
-        unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-	  @selected_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
-	else
-	  render :new
-	end
+    	 else
+    	   render :new
+    	 end
+          when "new_address"
+            unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
+    	  @selected_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
+    	else
+    	  render :new
+    	end
       end
 
       end
 
       def create
+        @order = current_user.orders.new(order_params)
+        @selected_pay_method = params[:order][:payment_method]
+        @address_type = params[:order][:address_type]
+        @shipping_fee = 800
+        @cart_items_price = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+        @total_price = @shipping_fee + @cart_items_price
+        @order.save
+        @cart_items = current_user.cart_items.all
+        @cart_items.each do |cart_item|
+        @order_detail = @order.order_detail.new
+        @order_detail.item_id = cart_item.item.id
+        @order_detail.name = cart_item.item.name
+        @order_detail.price = cart_item.item.price
+        @order_detail.quantity = cart_item.quantity
+        @order_detail.save
+        current_member.cart_items.destroy_all #カートの中身を削除
+        redirect_to orders_complete_path
+
+        end
+
+
 
       end
 
+
       def index
-        @orders = Order.where(customer_id: current_customer.id).order(created_at: :desc).
+       @orders = Order.where(customer_id:current_customer)
       end
 
       def show
@@ -58,6 +80,6 @@ class OrdersController < ApplicationController
   params.require(:order).permit(:payment_method, :post_code, :address, :name)
   end
 
-  end
+
 
 

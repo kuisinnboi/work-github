@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'addresses/edit'
+  get 'addresses/index'
+  patch 'addresses/:id' => 'addresses#update', as: 'update_addresses'
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -19,11 +22,11 @@ Rails.application.routes.draw do
   get 'customers/update'
   get 'customers/unsubscribe'
   get 'customers/withdraw'
-  
+
   get 'orders/new'
   get 'orders/show'
   get 'orders/index'
-  post '/orders/complete', to: 'orders#complete', as: 'orders_complete'
+  get '/orders/complete'
    post '/orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
   namespace :admin do
     get 'orders/show'
