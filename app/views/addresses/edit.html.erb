@@ -1,30 +1,29 @@
-<div class="container my-5 bg-white">
+<div class="container my-5 bg-white ">
   <div class="row">
     <h2>配送先を編集する</h2>
   </div>
    <div class="row mt-3">
  	<div class="col-4">
 	 <%= form_with model: @address, url: update_addresses_path(@address.id), method: :patch do |f| %>
-	 	<div class="form-group">
-			<%= f.label :"郵便番号" %>
-			<%= f.text_field :post_code %>
-		</div>
+	 	<table class="table">
+	 		<tr>
+	 			<th><%= f.label :"郵便番号" %></th>
+	 			<th><%= f.text_field :post_code %></th>
+	 		</tr>
 
-		<div class="form-group">
-			<%= f.label :"住所" %>
-			<%= f.text_field :address%>
-		</div>
+	    <tr>
+	    	<th><%= f.label :"住所" %></th>
+	    	<th><%= f.text_field :address%></th>
+	    </tr>
 
-		<div class="form-group">
-			<%= f.label :"宛名" %>
+			<tr>
+				<th><%= f.label :"宛名" %></th>
+				<th><%= f.text_field :name %></th>
+			</tr>
+		</table>
 
-
-　　　　　　<%= f.text_field :name %>
-
-		</div>
-
-		<div class="row">
-			<%= f.submit "編集する", class: "btn btn-outline-danger mx-auto mt-3" %>
+		<div class="row float-right">
+			<%= f.submit "変更内容を保存", class: "btn btn-sm btn-success mx-auto mt-3" %>
 		</div>
 	<% end %>
  </div>

@@ -3,23 +3,29 @@
 		  <h2>配送先</h2>
     </div>
     	<%= form_for(@address) do |f| %>
-        <div class="row">
-      		郵便番号（ハイフンなし）<%= f.text_field :post_code, placeholder: "郵便番号" %>
-        </div>
+        <table class="table">
+        <tr>
+        <th>郵便番号（ハイフンなし）</th>
+        <th><%= f.text_field :post_code, placeholder: "郵便番号" %></th>
+        </tr>
+         <tr>
+           <th>住所</th>
+           <th><%= f.text_field :address, placeholder: "住所" %></th>
+           </tr>
+         <tr>
+           <th>宛名</th>
+           <th>	<%= f.text_field :name, placeholder: "名前" %></th>
+      	</tr>
+      	</table>
 
-        <div class="row">
-      		住所<%= f.text_field :address, placeholder: "住所" %>
-        </div>
-
-        <div class="row">
-      		宛名<%= f.text_field :name, placeholder: "名前" %>
 
 
-        <div class="row">
-    		  <%= f.submit "新規登録", class: "btn btn-primary btn-outline-danger mx-auto" %>
+
+        <div class="row float-right">
+    		  <%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
         </div>
     	<% end %>
-    </div>
+
      <div class="row">
     <table class="table">
       <thead>
@@ -37,8 +43,8 @@
      	<td><%= address.post_code %></td>
      	<td><%= address.address %></td>
      	<td><%= address.name %></td>
-     	<td><%= link_to "編集する", edit_address_path(address),  class: "btn btn-sm btn-outline-danger" %>
-          <%= link_to "削除する", address_path(address), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+     	<td><%= link_to "編集する", edit_address_path(address),  class: "btn btn-sm btn-success" %>
+          <%= link_to "削除する", address_path(address), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
         </td>
      </tr>
   <% end %>
