@@ -64,16 +64,19 @@ Rails.application.routes.draw do
   namespace :admin do
       root to: 'homes#top'
       resources :sessions, only: [:new, :create, :destroy]
-      resources :homes, only: [:top]
+      resources :homes, only: [:top,:show]
       resources :items, only: [:show, :index, :new, :create, :edit, :update, :destroy]
       resources :genres, only: [:edit, :create,:index, :update,:new]
 
 
       resources :customers, only: [:show, :edit, :update, :index]
-      resources :orders, only: [:show, :update]
-      resources :order_details, only: [:update]
+      resources :orders, only: [:show, :update] do
+        member do
+          resources :order_details, only: [:update]
+        end
 
       end
+    end
 
 
 end

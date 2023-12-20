@@ -1,2 +1,105 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class='container my-5 bg-white' style="padding: 40px;">
+  <div class='row'>
+    <div class='col-md-5 offset-md-1'>
+      <div>
+        <h2 style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">注文履歴詳細</h2>
+      </div>
+    </div>
+      <table class="table table-striped" style="margin-top: 60px; background-color: #fff;">
+          <tr>
+            <%= flash[:notice] %>
+          </tr>
+        <tr>
+          <td class="table-warning">
+            購入者
+          </td>
+          <td>
+            <%= @order.customer.last_name %><%= @order.customer.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-warning">
+            注文日
+          </td>
+          <td>
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-warning">
+            配送先
+          </td>
+          <td>
+            <%= @order.address %>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-warning">
+            支払方法
+          </td>
+          <td>
+            <%= @order.payment_method %>
+          </td>
+        </tr>
+        <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+          <tr>
+            <td class="table-warning">
+              注文ステータス
+            </td>
+            <td class="d-flex justify-content-between">
+              <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
+
+              <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <div clss="row">
+      <div class='col-md-7'>
+      <table class="table" style="background-color: #fff;">
+        <tr class="table-success">
+          <th>
+            商品名
+          </th>
+          <th>
+            単価(税込）
+          </th>
+          <th>
+            数量
+          </th>
+          <th>
+            小計
+          </th>
+          <th>
+            製作ステータス
+          </th>
+        </tr>
+        <% @order.order_details.each do |detail| %>
+          <tr>
+            <td>
+              <%= detail.item.name %>
+            </td>
+            <td>
+              <%= detail.price %>
+            </td>
+            <td>
+              <%= detail.amount %>
+            </td>
+            <%= form_with model: detail, url: admin_order_detail_path(detail) do |detail_status| %>
+              <td>
+                <%= detail_status.select :making_status, options_for_select(OrderDetail.making_statuses.keys, detail_status.object.making_status) %>
+              </td>
+              <td>
+                <%= detail_status.submit "変更を保存", class: "btn btn-sm btn-success" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <div class="text-right">
+        <%= link_to "戻る", admin_root_path, class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
