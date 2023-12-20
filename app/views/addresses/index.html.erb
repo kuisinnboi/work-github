@@ -1,0 +1,52 @@
+<div class="container my-5 bg-white">
+	<div class="row">
+		  <h2>配送先</h2>
+    </div>
+    	<%= form_for(@address) do |f| %>
+        <div class="row">
+      		郵便番号（ハイフンなし）<%= f.text_field :post_code, placeholder: "郵便番号" %>
+        </div>
+
+        <div class="row">
+      		住所<%= f.text_field :address, placeholder: "住所" %>
+        </div>
+
+        <div class="row">
+      		宛名<%= f.text_field :name, placeholder: "名前" %>
+
+
+        <div class="row">
+    		  <%= f.submit "新規登録", class: "btn btn-primary btn-outline-danger mx-auto" %>
+        </div>
+    	<% end %>
+    </div>
+     <div class="row">
+    <table class="table">
+      <thead>
+       <tr>
+         <th>郵便番号</th>
+         <th>住所</th>
+         <th>宛名</th>
+         <th></th>
+       <tr>
+      </thead>
+
+     <tbody>
+    <% @addresses.each do |address| %>
+    <tr>
+     	<td><%= address.post_code %></td>
+     	<td><%= address.address %></td>
+     	<td><%= address.name %></td>
+     	<td><%= link_to "編集する", edit_address_path(address),  class: "btn btn-sm btn-outline-danger" %>
+          <%= link_to "削除する", address_path(address), method: :delete ,data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-outline-danger" %>
+        </td>
+     </tr>
+  <% end %>
+     </tbody>
+    </table>
+  </tr>
+</tr>
+</thead>
+</table>
+</div>
+  </div>
