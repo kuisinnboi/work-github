@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'cart_items/index'
+  get 'cart_items/update'
+  get 'cart_items/destroy'
+  get 'cart_items/destroy_all'
+  get 'cart_items/create'
   get 'addresses/edit'
   get 'addresses/index'
   patch 'addresses/:id' => 'addresses#update', as: 'update_addresses'
