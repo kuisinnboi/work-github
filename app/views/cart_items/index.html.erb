@@ -15,10 +15,18 @@
         </thead>
         <tbody>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <% @items.each do |items| %>
+            <td>
+              <%= image_tag items.item_image, size:'50x50' %>
+              <%= item.neme %>
+            </td>
+            <td><%= (@item.price * 1.1).floor %></td>
+            <% end %>
+            <% @cart_items.each do |cart_items| %>
+            <td>
+              
+            </td>
+            <td><%= cart_item.subtotal%></td>
             <td></td>
           </tr>
         </tbody>
