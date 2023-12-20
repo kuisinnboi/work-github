@@ -1,14 +1,14 @@
-<div class='container my-5 bg-white' style="padding: 40px;">
-  <div class='row'>
-    <div class='col-md-5 offset-md-1'>
+<div class='container my-5 bg-white ' style="padding: 40px;">
+  <div class='row d-flex justify-content-center'>
+    <div class='col-md-8'>
       <div>
-        <h2 style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">注文履歴詳細</h2>
+        <h2>注文履歴詳細</h2>
       </div>
-    </div>
-      <table class=" col-md-8 table table-striped" style="margin-top: 6px; background-color: #fff;">
-          <tr>
-            <%= flash[:notice] %>
-          </tr>
+      <table class="table table-striped" style="margin-top: 6px; background-color: #fff;">
+        
+        <tr>
+          <%= flash[:notice] %>
+        </tr>
         <tr>
           <td class="table-warning">
             購入者
@@ -48,14 +48,15 @@
             </td>
             <td class="d-flex justify-content-between">
               <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
-
               <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
             </td>
           </tr>
         <% end %>
       </table>
     </div>
-    <div clss="row">
+  </div>
+
+    <div class="row d-flex justify-content-center">
       <div class='col-md-7'>
       <table class="table" style="background-color: #fff;">
         <tr class="table-success">
@@ -98,6 +99,7 @@
         <% end %>
       </table>
       <div class="text-right">
+        <%= link_to "#{@order.customer.last_name}様の注文一覧を見る", admin_home_path(@order.customer), class: "btn btn-sm btn-primary mr-3" %>
         <%= link_to "戻る", admin_root_path, class: "btn btn-sm btn-primary" %>
       </div>
     </div>
