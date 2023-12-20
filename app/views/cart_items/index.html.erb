@@ -1,0 +1,50 @@
+<div class="container bg-white my-5 p-5">
+  <div>
+    <h2>ショッピングカート</h2>
+    <%= link_to "カートを空にする", deatroy_all_cart_item_path(@cart_items), class: "btn btn-danger text-white" %>
+    <div>
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <td>商品名</td>
+            <td>単価(税込)</td>
+            <td>数量</td>
+            <td>小計</td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @items.each do |items| %>
+            <td>
+              <%= image_tag items.item_image, size:'50x50' %>
+              <%= item.neme %>
+            </td>
+            <td><%= (@item.price * 1.1).floor %></td>
+            <% end %>
+            <% @cart_items.each do |cart_items| %>
+            <td>
+              
+            </td>
+            <td><%= cart_item.subtotal%></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <%= link_to "買い物を続ける", root_path, class: "btn btn-primary text-white" %>
+      </div>
+      <div>
+        <table>
+          <tr>
+            <td>合計金額</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div>
+      <%= link_to "情報入力に進む", orders_new_path(@orders), class: "btn btn-success text-white" %>
+    </div>
+  </div>
+</div>
