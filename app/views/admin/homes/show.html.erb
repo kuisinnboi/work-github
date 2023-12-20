@@ -19,13 +19,13 @@
         <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= order.created_at.strftime('%Y/%m/%d') %>
-            </td>"amount"
+              <%= link_to order.created_at.strftime('%Y/%m/%d %H:%M'),admin_order_path(order) %>
+            </td>
             <td>
               <%= order.order_details.sum(:amount) %>
             </td>
             <td>
-              
+              <%= order.status %>
             </td>
           </tr>
         <% end %>
@@ -37,7 +37,6 @@
               <% (1..@total_pages).each do |page| %>
                 <% if page == @current_page %>
                   <%= page %>
-
                 <% else %>
                   <%= link_to page, admin_genres_path(page: page) %>
                 <% end %>
