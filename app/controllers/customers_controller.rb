@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_customer!
-  before_action :is_matching_login_customer
+  before_action :is_matching_login_customer, except: [:unsubscribe]
 
   def show
     @customer = current_customer
@@ -22,7 +22,7 @@ class CustomersController < ApplicationController
   end
 
   def unsubscribe
-    @customer = Customer.find(params[:id])
+    @customer = current_customer
   end
 
   def withdraw
