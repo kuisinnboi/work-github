@@ -1,4 +1,4 @@
-<div class='container px-5 px-sm-0' style="padding: 40px;">
+<div class='container my-5 bg-white' style="padding: 40px;">
   <div class='row'>
     <div class='col-md-5 offset-md-1'>
       <div>
@@ -22,7 +22,7 @@
             注文日
           </td>
           <td>
-            <%= @order.created_at.strftime('%Y/%m/%d') %> 
+            <%= @order.created_at.strftime('%Y/%m/%d') %>
           </td>
         </tr>
         <tr>
@@ -46,10 +46,9 @@
             <td class="table-warning">
               注文ステータス
             </td>
-            <td>
+            <td class="d-flex justify-content-between">
               <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
-            </td>
-            <td>
+
               <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
             </td>
           </tr>
