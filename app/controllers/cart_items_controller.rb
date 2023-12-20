@@ -1,5 +1,8 @@
 class CartItemsController < ApplicationController
+
   def index
+    @cart_item = current_customer.cart_item
+    @item = @@cart_item.item
   end
 
   def update
@@ -12,5 +15,6 @@ class CartItemsController < ApplicationController
   end
 
   def create
+
   end
 end

@@ -1,7 +1,7 @@
 <div class="container bg-white my-5 p-5">
   <div>
     <h2>ショッピングカート</h2>
-    <%= link_to "カートを空にする", deatroy_all_cart_item_path(@cart_items), class: "btn btn-danger text-white" %>
+    <%= link_to "カートを空にする",  deatroy_all_cart_items_path, class: "btn btn-danger text-white" %>
     <div>
       <table class="table table-bordered mt-3">
         <thead>
@@ -15,20 +15,21 @@
         </thead>
         <tbody>
           <tr>
-            <% @items.each do |items| %>
+            <% @items.each do |item| %>
             <td>
-              <%= image_tag items.item_image, size:'50x50' %>
+              <%= image_tag item.item_image, size:'50x50' %>
               <%= item.neme %>
             </td>
-            <td><%= (@item.price * 1.1).floor %></td>
+            <td><%= (item.price * 1.1).floor %></td>
             <% end %>
-            <% @cart_items.each do |cart_items| %>
+            <% @cart_items.each do |cart_item| %>
             <td>
-              
+              <%= cart_item.amount %>
             </td>
-            <td><%= cart_item.subtotal%></td>
-            <td></td>
+            <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+            <td><%= link_to "削除する", cart_items_path, class: "btn btn-danger text-white" %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
       <div>
@@ -44,7 +45,7 @@
       </div>
     </div>
     <div>
-      <%= link_to "情報入力に進む", orders_new_path(@orders), class: "btn btn-success text-white" %>
+      <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success text-white" %>
     </div>
   </div>
 </div>
