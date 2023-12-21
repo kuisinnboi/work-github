@@ -4,8 +4,8 @@
     <div class="col-md-2 order-md-1 order-2">
       <%= render 'genre_searches/genre' ,genres: @genres %>
     </div>
-    <div class="col-md-10 order-1 card">
-      <div class="card">
+    <div class="col-md-10 order-1 ">
+      <div >
         <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
         <div class="card-img-overlay text-center">
           <p>ようこそ、ながのCAKEへ！<br />
@@ -15,7 +15,7 @@
           </p>
         </div>
       </div>
-      <div class="m-4 d-flexr">
+      <div class="m-4 d-flexr bg-white p-3">
           <h2>新着商品</h2>
           <div class="mx-5 px-auto">
             <% @items.each do |items| %>

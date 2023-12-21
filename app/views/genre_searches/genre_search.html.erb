@@ -13,7 +13,7 @@
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.item_image, size: "200x150" %>
           <% end %>
-          <p><%= item.name %></p>
+          <p><%= link_to item.name, item_path(item.id) %></p>
           <p>¥<%= item.price %></p>
         </div>
         <% end %>
