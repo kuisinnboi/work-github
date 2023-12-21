@@ -11,7 +11,7 @@
       </div>
       <div class="mt-2">
         <table>
-          <%= form_with model: @cart_items do |f| %>
+          <%= form_with model: @cart_items, url: cart_items_create, mesthod: :post do |f| %>
           <tr>
             <td><%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"]], include_blank: "個数選択" %></td>
             <td><%= link_to "カートに入れる", cart_items_create_path, class: "btn btn-success text-white" %></td>
