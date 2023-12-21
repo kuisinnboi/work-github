@@ -1,7 +1,7 @@
 <div class="container bg-white my-5 p-5">
   <div>
     <h2>ショッピングカート</h2>
-    <%= link_to "カートを空にする",  deatroy_all_cart_items_path, class: "btn btn-danger text-white" %>
+    <%= link_to "カートを空にする",  cart_items_destroy_all_path, class: "btn btn-danger text-white" %>
     <div>
       <table class="table table-bordered mt-3">
         <thead>
@@ -20,12 +20,13 @@
               <%= image_tag cart_item.item.item_image, size:'50x50' %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= (cart_item.item.price * 1.1).floor %></td>
+            <td><%= cart_item.item.with_tax_price%></td>
+            <!--<td><%#= (cart_item.item.price * 1.1).floor %></td>-->
             <td>
               <%= cart_item.amount %>
             </td>
             <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-            <td><%= link_to "削除する", cart_items_path, class: "btn btn-danger text-white" %></td>
+            <td><%= link_to "削除する", cart_item_path, method: :delete, class: "btn btn-danger text-white" %></td>
           </tr>
           <% end %>
         </tbody>
