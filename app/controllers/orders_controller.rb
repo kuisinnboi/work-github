@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
       @address_type = params[:order][:address_type]
       case @address_type
       when "customer_address"
-        @selected_address = current_customer.post_code + " " + current_customer.address + " " + current_customer.last_name + current_member.first_name
+        @selected_address = current_customer.post_code + " " + current_customer.address + " " + current_customer.last_name + current_customer.first_name
       when "registered_address"
         unless params[:order][:registered_address_id] == ""
           selected = Address.find(params[:order][:registered_address_id])
@@ -27,13 +27,10 @@ class OrdersController < ApplicationController
     	   render :new
     	 end
           when "new_address"
-            unless params[:order][:new_post_code] == "" && params[:order][:new_address] == "" && params[:order][:new_name] == ""
-    	  @selected_address = params[:order][:new_post_code] + " " + params[:order][:new_address] + " " + params[:order][:new_name]
+          @selected_address =@order.post_code + " " + @order.address + " " + @order.name
     	else
     	  render :new
     	end
-      end
-
       end
 
       def create

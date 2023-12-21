@@ -11,8 +11,8 @@ class Order < ApplicationRecord
      "発送済み":4
   }
 enum payment_method: {
-  "クレジットカード": 0,
-  "銀行振込": 1
+  credit_card: 0,
+  transfer: 1
   }
 end
 
