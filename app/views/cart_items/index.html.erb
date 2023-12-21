@@ -26,7 +26,7 @@
               <%= cart_item.amount %>
             </td>
             <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-            <td><%= link_to "削除する", cart_item_path, method: :delete, class: "btn btn-danger text-white" %></td>
+            <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger text-white" %></td>
           </tr>
           <% end %>
         </tbody>
