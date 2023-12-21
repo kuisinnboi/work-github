@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
 
        @cart_items = CartItem.where(customer_id: current_customer.id)
       @shipping_fee = 800
-      @cart_items_price = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+      @cart_items_price = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
       @total_price = @shipping_fee + @cart_items_price
 
       @selected_pay_method = params[:order][:payment_method]
