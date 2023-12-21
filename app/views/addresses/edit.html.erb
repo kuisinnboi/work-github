@@ -2,23 +2,29 @@
   <div class="row">
     <h2>配送先を編集する</h2>
   </div>
-   <div class="row mt-3">
- 	<div class="col-4">
+   <div class="row">
+ 	<div class="col">
 	 <%= form_with model: @address, url: update_addresses_path(@address.id), method: :patch do |f| %>
 	 	<table class="table">
 	 		<tr>
-	 			<th><%= f.label :"郵便番号" %></th>
-	 			<th><%= f.text_field :post_code %></th>
+	 			<th><%= f.label :"郵便番号（ハイフンなし）" %></th>
+	 			<th><%= f.text_field :post_code, class: "form-control offset-1 col-10" %></th>
+	 			<th></th>
+	 			<th></th>
 	 		</tr>
 
 	    <tr>
 	    	<th><%= f.label :"住所" %></th>
-	    	<th><%= f.text_field :address%></th>
+	    	<th colspan="2"><%= f.text_field :address, class: "form-control offset-1 col-10"%></th>
+	    	<th></th>
+
 	    </tr>
 
 			<tr>
 				<th><%= f.label :"宛名" %></th>
-				<th><%= f.text_field :name %></th>
+				<th><%= f.text_field :name, class: "form-control offset-1 col-10" %></th>
+				<th></th>
+				<th></th>
 			</tr>
 		</table>
 
@@ -30,3 +36,4 @@
 
 </div>
 </div>
+
