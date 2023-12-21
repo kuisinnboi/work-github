@@ -4,80 +4,80 @@
       <div>
         <h2>注文履歴詳細</h2>
       </div>
-      <table class="table table-striped" style="margin-top: 6px; background-color: #fff;">
-        
-        <tr>
-          <%= flash[:notice] %>
-        </tr>
-        <tr>
-          <td class="table-warning">
-            購入者
-          </td>
-          <td>
-            <%= @order.customer.last_name %><%= @order.customer.first_name %>
-          </td>
-        </tr>
-        <tr>
-          <td class="table-warning">
-            注文日
-          </td>
-          <td>
-            <%= @order.created_at.strftime('%Y/%m/%d') %>
-          </td>
-        </tr>
-        <tr>
-          <td class="table-warning">
-            配送先
-          </td>
-          <td>
-            <%= @order.address %>
-          </td>
-        </tr>
-        <tr>
-          <td class="table-warning">
-            支払方法
-          </td>
-          <td>
-            <%= @order.payment_method %>
-          </td>
-        </tr>
-        <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+      <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+        <table class="table table-striped" style="margin-top: 6px; background-color: #fff;">
+
+          <tr>
+            <%= flash[:notice] %>
+          </tr>
           <tr>
             <td class="table-warning">
-              注文ステータス
+              購入者
             </td>
-            <td class="d-flex justify-content-between">
-              <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
-              <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+            <td>
+              <%= @order.customer.last_name %><%= @order.customer.first_name %>
             </td>
           </tr>
-        <% end %>
-      </table>
+          <tr>
+            <td class="table-warning">
+              注文日
+            </td>
+            <td>
+              <%= @order.created_at.strftime('%Y/%m/%d') %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              配送先
+            </td>
+            <td>
+              <%= @order.address %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              支払方法
+            </td>
+            <td>
+              <%= @order.payment_method %>
+            </td>
+          </tr>
+            <tr>
+              <td class="table-warning">
+                注文ステータス
+              </td>
+              <td class="d-flex justify-content-between">
+                <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
+                <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+              </td>
+            </tr>
+        </table>
+      <% end %>
     </div>
   </div>
 
     <div class="row d-flex justify-content-center">
       <div class='col-md-7'>
-      <table class="table" style="background-color: #fff;">
-        <tr class="table-success">
-          <th>
-            商品名
-          </th>
-          <th>
-            単価(税込）
-          </th>
-          <th>
-            数量
-          </th>
-          <th>
-            小計
-          </th>
-          <th>
-            製作ステータス
-          </th>
-        </tr>
-        <% @order.order_details.each do |detail| %>
-          <tr>
+      <% @order.order_details.each do |detail| %>
+        <table class="table" style="background-color: #fff;">
+          <tr class="table-success">
+            <th>
+              商品名
+            </th>
+            <th>
+              単価(税込）
+            </th>
+            <th>
+              数量
+            </th>
+            <th>
+              小計
+            </th>
+            <th>
+              製作ステータス
+            </th>
+          </tr>
+           <tr>
             <td>
               <%= detail.item.name %>
             </td>
@@ -96,8 +96,8 @@
               </td>
             <% end %>
           </tr>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
       <div class="text-right">
         <%= link_to "#{@order.customer.last_name}様の注文一覧を見る", admin_home_path(@order.customer), class: "btn btn-sm btn-primary mr-3" %>
         <%= link_to "戻る", admin_root_path, class: "btn btn-sm btn-primary" %>
