@@ -8,6 +8,9 @@ class CartItemsController < ApplicationController
   end
 
   def update
+     @cart_items = CartItem.find(params[:id])
+     @cart_items.update(cart_items_params)
+      redirect_to cart_items_path
   end
 
   def destroy
