@@ -9,7 +9,7 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  
+
    <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark justify-content-between" style="background-color: #995500;">
      <div class="container-fluid">
@@ -21,7 +21,7 @@
          <ul class="navbar-nav ">
           <% if customer_signed_in? %>
            <li class="nav-item text-right">
-             <%= link_to "マイページ", customer_path(current_customer), class: "nav-link" %>
+             <%= link_to "マイページ", customers_show_path, class: "nav-link" %>
            </li>
            <li class="nav-item text-right">
              <%= link_to "商品一覧", items_path, class: "nav-link" %>

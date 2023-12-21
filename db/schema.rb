@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2023_12_15_081640) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "post_code"
+    t.string "post_code"
     t.string "address"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2023_12_15_081640) do
     t.string "post_code"
     t.string "address"
     t.string "telephone_number"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -116,14 +116,14 @@ ActiveRecord::Schema.define(version: 2023_12_15_081640) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.string "post_code", null: false
-    t.string "address", null: false
-    t.integer "payment_method", default:0, null: false
-    t.string "name", null: false
-    t.integer "status", default:0, null: false
-    t.integer "total_payment", null: false
-    t.integer "shipping_cost", null: false
+    t.integer "customer_id"
+    t.string "post_code"
+    t.string "address"
+    t.integer "payment_method"
+    t.string "name"
+    t.integer "status"
+    t.integer "total_payment"
+    t.integer "shipping_cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
