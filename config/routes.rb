@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'cart_items/index'
-  get 'cart_items/update'
-  get 'cart_items/destroy'
-  get 'cart_items/destroy_all'
-  get 'cart_items/create'
+  get 'cart_items' => 'cart_items#index', as: 'cart_items_path'
+  post 'cart_items' => 'cart_items#create'
+  patch 'cart_items/:id' => 'cart_items#update', as: 'cart_item_path'
+  delete 'cart_items/:id' => 'cart_items#destroy'
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
   get 'addresses/edit'
   get 'addresses/index'
   patch 'addresses/:id' => 'addresses#update', as: 'update_addresses'
