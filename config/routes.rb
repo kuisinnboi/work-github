@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'cart_items' => 'cart_items#index', as: 'cart_items_path'
+  get 'cart_items' => 'cart_items#index', as: 'cart_items'
   post 'cart_items' => 'cart_items#create'
-  patch 'cart_items/:id' => 'cart_items#update', as: 'cart_item_path'
+  patch 'cart_items/:id' => 'cart_items#update', as: 'cart_item'
   delete 'cart_items/:id' => 'cart_items#destroy'
   delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
