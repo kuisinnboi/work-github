@@ -1,10 +1,10 @@
-<div class="container overflow-hidden">
+<div class="container py-5 overflow-hidden">
 
   <div class="row mx-auto">
-    <div class="col-md-2 order-md-1 order-2">
+    <div class="col-lg-3 order-lg-1 order-2">
       <%= render 'genre_searches/genre' ,genres: @genres %>
     </div>
-    <div class="col-md-10 order-1 ">
+    <div class="col-lg-9 order-1 ">
       <div >
         <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
         <div class="card-img-overlay text-center">
@@ -17,9 +17,9 @@
       </div>
       <div class="m-4 d-flexr bg-white p-3">
           <h2>新着商品</h2>
-          <div class="mx-5 px-auto">
+          <div  class="row d-flex justify-content-center">
             <% @items.each do |items| %>
-              <div>
+              <div class="col-md-5 col-sm-12 p-3 m-1">
                 <div class="text-center">
                   <%= link_to item_path(items.id) do %>
                     <%= image_tag items.item_image, size:'150x150' %>
