@@ -1,7 +1,7 @@
 <div class="container bg-white my-5 p-5">
   <div>
     <h2>ショッピングカート</h2>
-    <%= link_to "カートを空にする",  cart_items_destroy_all_path, class: "btn btn-danger text-white" %>
+    <%= link_to "カートを空にする",  cart_items_destroy_all_path, method: :delete, class: "btn btn-danger text-white" %>
     <div>
       <table class="table table-bordered mt-3">
         <thead>
@@ -15,17 +15,22 @@
         </thead>
         <tbody>
           <tr>
+            <% @nedan = 0 %>
             <% @cart_items.each do |cart_item| %>
+            <% @nedan = @nedan + cart_item.subtotal %>
             <td>
               <%= image_tag cart_item.item.item_image, size:'50x50' %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.with_tax_price%></td>
-            <!--<td><%#= (cart_item.item.price * 1.1).floor %></td>-->
+            <td><%= cart_item.item.with_tax_price%>円</td>
             <td>
               <%= cart_item.amount %>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+                <%= f.select :amount, *[1..10] %>
+                <%= f.submit "変更", class: "btn btn-success text-white" %>
+              <% end %>
             </td>
-            <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+            <td><%= cart_item.subtotal%>円</td>
             <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger text-white" %></td>
           </tr>
           <% end %>
@@ -38,7 +43,7 @@
         <table>
           <tr>
             <td class="table-warning">合計金額</td>
-            <td></td>
+            <td><%= @nedan %>円</td>
           </tr>
         </table>
       </div>
