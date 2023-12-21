@@ -1,10 +1,10 @@
-<div class="container p-3 mx-auto my-3 py-3 bg-white">
+<div class="container p-3">
   <div class="row">
-    <div class="col-md-3 col-md-offset-1">
+    <div class="col-md-3 bg-white m-1">
       <%= render 'genre_searches/genre' ,genres: @genres %>
     </div>
 
-    <div class="col-md-8">
+    <div class="col-md-8 col-md-offset-1 bg-white p-3">
       <h3>検索結果</h3>
 
       <div class="search-items d-flex flex-wrap">
@@ -13,7 +13,7 @@
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.item_image, size: "200x150" %>
           <% end %>
-          <p><%= item.name %></p>
+          <p><%= link_to item.name, item_path(item.id) %></p>
           <p>¥<%= item.price %></p>
         </div>
         <% end %>

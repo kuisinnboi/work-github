@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  
   def index
     records_per_page = 10
     current_page = params[:page].to_i
