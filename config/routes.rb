@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   get 'customers/update'
   get 'customers/unsubscribe'
   get 'customers/withdraw'
-
   get 'orders/new'
   get 'orders/show'
   get 'orders/index'
@@ -82,7 +81,8 @@ Rails.application.routes.draw do
 
       end
     end
-
+    # ジャンル検索
+  get '/genre/search' => 'genre_searches#genre_search'
 
 end
 

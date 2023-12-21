@@ -1,37 +1,40 @@
 <div class="container overflow-hidden">
-  <div class="row mx-auto">
-    <div class="card">
-      <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
-      <div class="card-img-overlay text-center">
-        <p>ようこそ、ながのCAKEへ！<br />
-           このサイトは、ケーキ販売のECサイトになります。<br />
-           会員でない方も商品の閲覧はできますが、<br />
-           購入には会員登録が必要になります。
-        </p>
-      </div>
-    </div>
-  </div>
 
-  <div class="mx-auto my-3 py-3 bg-white">
-    <div class="m-4 d-flexr">
-      <h2>新着商品</h2>
-      <div class="col-lg-2 mx-5 px-auto">
-        <% @items.each do |items| %>
-          <div>
-            <div class="text-center">
-              <%= link_to item_path(items.id) do %>
-                <%= image_tag items.item_image, size:'150x150' %>
-              <% end %>
-            </div>
-            <div class="text-center"><%= link_to items.name, item_path(items.id) %></div>
-            <div class="text-center">￥<%= (items.price * 1.1).floor %></div>
-            <!--<div><%#= link_to (items.price * 1.1).floor, item_path(items.id) %></div>-->
+  <div class="row mx-auto">
+    <div class="col-md-2 order-md-1 order-2">
+      <%= render 'genre_searches/genre' ,genres: @genres %>
+    </div>
+    <div class="col-md-10 order-1 card">
+      <div class="card">
+        <%= image_tag 'AdobeStock_205380754_Preview.jpeg', class:"img-fluid", size:'max-width: 100%; , height: auto;' %>
+        <div class="card-img-overlay text-center">
+          <p>ようこそ、ながのCAKEへ！<br />
+             このサイトは、ケーキ販売のECサイトになります。<br />
+             会員でない方も商品の閲覧はできますが、<br />
+             購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
+      <div class="m-4 d-flexr">
+          <h2>新着商品</h2>
+          <div class="mx-5 px-auto">
+            <% @items.each do |items| %>
+              <div>
+                <div class="text-center">
+                  <%= link_to item_path(items.id) do %>
+                    <%= image_tag items.item_image, size:'150x150' %>
+                  <% end %>
+                </div>
+                <div class="text-center"><%= link_to items.name, item_path(items.id) %></div>
+                <div class="text-center">￥<%= (items.price * 1.1).floor %></div>
+                <!--<div><%#= link_to (items.price * 1.1).floor, item_path(items.id) %></div>-->
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-      <dev class="justify-content-end">
-        <%= link_to "全ての商品を見る＞", items_path %>
-      </div>
+          <div class="justify-content-end">
+            <%= link_to "全ての商品を見る＞", items_path %>
+          </div>
+        </div>
     </div>
   </div>
 </div>
