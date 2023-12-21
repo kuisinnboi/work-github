@@ -10,6 +10,8 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new
   end
 
+    # get '/genre/search' => 'genre_searches#genre_search'
+
   def create
     @genre = Genre.new(genre_params)
     if @genre.save

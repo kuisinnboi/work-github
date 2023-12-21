@@ -88,7 +88,8 @@ Rails.application.routes.draw do
 
       end
     end
-
+    # ジャンル検索
+  get '/genre/search' => 'genre_searches#genre_search'
 
 end
 
