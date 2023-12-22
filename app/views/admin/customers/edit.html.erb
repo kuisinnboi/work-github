@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between">
         <h2>お客様情報編集</h2>
         <div>
-          <%= link_to "一覧に戻る", admin_customers_path, class: "btn btn-sm btn-primary" %>
+          <%= link_to "お客様一覧に戻る", admin_customers_path, class: "btn btn-sm btn-primary" %>
         </div>
       </div>
       <%= form_with model: @customer, url: admin_customer_path(@customer) do |f| %>
@@ -107,7 +107,7 @@
         </div>
       <% end %>
       <div class="text-right">
-        <%= link_to "注文一覧を見る", admin_order_path(@customer), class: "btn btn-sm btn-primary" %>
+        <%= link_to "#{@customer.last_name}様の注文一覧を見る", admin_home_path(@customer), class: "btn btn-sm btn-primary" %>
       </div>
     </div>
   </div>
