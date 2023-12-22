@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   end
 
   root to: "homes#top"
-  get '/homes/about', to:  'homes#about', as: 'about'
+  get '/about', to:  'homes#about', as: 'about'
 
   get '/customers/my_page', to: 'customers#show', as: 'customers_show'
   get '/customers/infomation/edit', to: 'customers#edit', as: 'customers_edit'
