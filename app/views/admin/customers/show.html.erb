@@ -4,7 +4,7 @@
       <div class="d-flex justify-content-between">
         <h2>お客様詳細</h2>
         <div>
-          <%= link_to "一覧に戻る", admin_customers_path, class: "btn btn-sm btn-primary" %>
+          <%= link_to "お客様一覧に戻る", admin_customers_path, class: "btn btn-sm btn-primary" %>
         </div>
       </div>
       <table class="table table-striped" style="margin-top: 20px; background-color: #fff;">
@@ -84,7 +84,7 @@
       <div class="text-right">
         <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success mr-2" %>
 
-        <%= link_to "注文一覧を見る", admin_home_path(@customer), class: "btn btn-sm btn-primary" %>
+        <%= link_to "#{@customer.last_name}様の注文一覧を見る", admin_home_path(@customer), class: "btn btn-sm btn-primary" %>
       </div>
     </div>
   </div>
