@@ -2,9 +2,10 @@
   <div class='row'>
     <div class='col-md-10 offset-md-1'>
       <div class="d-flex justify-content-between" style="background-color: #fff; padding: 5px;">
-        <h2 class="d-flex justify-content-start" style="width: fit-content; padding: 5px; border-radius:5px; background-color: #D76F6A; color: #fff;">注文履歴一覧</h2>
+        <h2 class="d-flex justify-content-start">注文履歴一覧</h2>
       </div>
 
+      <div class = "my-3">
       <table class="table table-striped" style="background-color: #fff;">
         <thead>
           <tr>
@@ -23,18 +24,17 @@
                   <tr>
                     <td><%= link_to order.created_at.strftime("%Y/%m/%d %H:%M"), admin_order_path(order) %></td>
                     <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-                    <td><%= order.cart_items.sum(:quantity) %></td>
+                    <td><%= order.order_details.sum(:amount) %></td>
                     <td>
-                      <%= form_with model: order, url: admin_order_path(order), method: :patch do |f| %>
-                      <%= f.select :order_status, Order.order_statuses, class: "form-control" %>
-
-                      <% end %>
-                    </td>
+                      <%= order.status_i18n %>
+                      </td>
+                      <%#= form_with model: order, url: admin_order_path(order), method: :patch do |f| %>
                   </tr>
                 <% end %>
             </tbody>
         </table>
-      </table>
+
+      </div>
 
 
     </div>

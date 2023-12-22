@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
       get 'thanks'
-      post '/orders/confirm', to: 'orders#confirm', as: 'confirm'
+      post 'confirm', to: 'orders#confirm', as: 'confirm'
     end
   end
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
