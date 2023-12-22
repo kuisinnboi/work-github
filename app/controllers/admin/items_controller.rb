@@ -1,4 +1,4 @@
-class Admin::ItemsController < ApplicationController
+class Admin::ItemsController < Admin::ApplicationController
   
   def index
     records_per_page = 10
