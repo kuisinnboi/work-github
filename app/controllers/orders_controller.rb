@@ -70,8 +70,8 @@ class OrdersController < ApplicationController
       def show
         @order = Order.find(params[:id])
         @cart_items = CartItem.where(customer_id: current_customer.id)
-        @shipping_fee = 800
-        @order_details = OrderDetail.all
+        
+        @order_details = @order.order_details
         @subtotal = 0
       end
 
