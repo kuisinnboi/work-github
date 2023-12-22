@@ -47,8 +47,8 @@
                 注文ステータス
               </td>
               <td class="d-flex justify-content-between">
-                <%= f.select :status, options_for_select(Order.statuses.keys, f.object.status) %>
-                <%= f.submit "変更を保存", class: "btn btn-sm btn-success" %>
+                <%= f.select :status, Order.statuses_i18n.keys {|k| [I18n.t("enums.object.status_i18n.#{k}"), k]} %>
+                <%= f.submit "更新", class: "btn btn-sm btn-success" %>
               </td>
             </tr>
         </table>
@@ -92,7 +92,7 @@
                 <%= detail_status.select :making_status, options_for_select(OrderDetail.making_statuses.keys, detail_status.object.making_status) %>
               </td>
               <td>
-                <%= detail_status.submit "変更を保存", class: "btn btn-sm btn-success" %>
+                <%= detail_status.submit "更新", class: "btn btn-sm btn-success" %>
               </td>
             </tr>
           </table>
