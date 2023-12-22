@@ -1,31 +1,34 @@
-<div class="container my-5 bg-white">
-	<div class="row my-5">
+<div class="container my-5 p-5 bg-white">
+	<div class="row">
 		  <h4>配送先登録/一覧</h4>
     </div>
-    <div class = "row">
+    <div class = "row mx-5 my-3">
     	<%= form_with model: @address, class: "w-100" do |f| %>
-        <table class="table">
+        <table class="table table-borded">
         <tr>
-        <th>郵便番号（ハイフンなし）</th>
-        <th><%= f.text_field :post_code, class: "form-control", placeholder: "郵便番号" %></th>
+        <th class = "table-warning">郵便番号（ハイフンなし）</th>
+        <th><%= f.text_field :post_code, class: "form-control", placeholder: "0000000" %></th>
         <th></th>
         <th></th>
         </tr>
          <tr>
-           <th>住所</th>
-           <th colspan="2"><%= f.text_field :address,class: "form-control", placeholder: "住所" %></th>
+           <th class = "table-warning">住所</th>
+           <th colspan="2"><%= f.text_field :address,class: "form-control", placeholder: "東京都渋谷区代々木神園町0-0" %></th>
            <th></th>
            </tr>
          <tr>
-           <th>宛名</th>
-           <th>	<%= f.text_field :name, class: "form-control", placeholder: "名前" %></th>
+           <th class = "table-warning">宛名</th>
+           <th>	<%= f.text_field :name, class: "form-control", placeholder: "令和道子" %></th>
            <th></th>
-           <th><%= f.submit "新規登録", class: "btn btn-sm btn-success" %></th>
+           <th></th>
       	</tr>
       	</table>
+      	<div class="text-center">
+      	<%= f.submit "新規登録", class: "btn btn-sm btn-success" %>
     	<% end %>
     	</div>
-     <div class="row">
+    	</div>
+     <div class="row my-3">
     <table class="table">
       <thead>
        <tr class="table-warning">
