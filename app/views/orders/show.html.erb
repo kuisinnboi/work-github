@@ -1,8 +1,8 @@
 <div class="container my-5 bg-white">
   <div class="row">
-    
+
       <h2>注文履歴詳細</h2>
-    
+
   </div>
 
   <div class="row mt-5">
@@ -27,12 +27,12 @@
 
             <tr>
               <td>支払い方法</td>
-              <td><%= @order.payment %></td>
+              <td><%= @order.payment_method_i18n %></td>
             </tr>
 
             <tr>
               <td>ステータス</td>
-              <td><%= @order.order_status %></td>
+              <td><%= @order.status_i18n %></td>
             </tr>
           </tbody>
         </table>
@@ -47,20 +47,21 @@
 
       <div class="row">
         <table class="table">
+
           <tbody>
             <tr>
               <td>商品合計</td>
-              <td><%= @order.total_price  %></td>
+              <td></td>
             </tr>
 
             <tr>
               <td>配送料</td>
-              <td><%= @order.carriage %></td>
+              <td><%= @shipping_fee %></td>
             </tr>
 
             <tr>
               <td>ご請求額</td>
-              <td><%= @order.total_price + @order.carriage %></td>
+              <td><%= @order.total_payment %></td>
             </tr>
           </tbody>
         </table>
@@ -70,13 +71,13 @@
   </div>
 
   <div class="row">
-   
+
       <strong>注文内容</strong>
-    
+
   </div>
 
   <div class="row">
-    
+
 
       <table class="table">
         <thead>
@@ -87,20 +88,21 @@
             <th>小計</th>
           </tr>
         </thead>
-
-        <% @order_details.each do |f| %>
         <tbody>
-          <tr class="brown-border">
-            <td><%= f.item_name %></td>
-            <td><%= (f.item_price * 1.1).floor %></td>
-            <td><%= f.quantity %></td>
-            <td><%= ((f.item_price * f.quantity) * 1.1).floor %></td>
-          </tr>
+           <% @order_details.each do |order_details| %>
+    <tbody height="50">
+      <tr>
+        <td><%= order_details.item.name %></td>
+        <td>¥<%= (order_details.price * 1.1).floor %></td>
+        <td><%= order_details.amount %></td>
+        <td>¥<%= (order_details.amount * (order_details.price * 1.1).floor) %></td>
+      </tr>
+    </tbody>
+    <% end %>
         </tbody>
-        <% end %>
       </table>
 
     </div>
-  </div>
+
 
 </div>
