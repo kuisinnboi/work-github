@@ -27,13 +27,6 @@ Rails.application.routes.draw do
   # get 'customers/edit'
   # get 'customers/update'
   # get 'customers/unsubscribe'
-
-
-  get 'orders/new'
-  get 'orders/show'
-  get 'orders/index'
-  post '/orders/complete', to: 'orders#complete', as: 'orders_complete'
-   post '/orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
   namespace :admin do
     get 'orders/show'
   end
@@ -66,8 +59,8 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
-      get 'confirm'
       get 'thanks'
+      post '/orders/confirm', to: 'orders#confirm', as: 'confirm'
     end
   end
   resources :addresses, only: [:index, :edit, :create, :update, :destroy]
