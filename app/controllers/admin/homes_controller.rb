@@ -2,7 +2,7 @@ class Admin::HomesController < Admin::ApplicationController
   def top
     @orders = Order.all
   end
-  
+
   def show
     @customer = Customer.find(params[:id])
     @orders = @customer.orders.all

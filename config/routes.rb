@@ -77,7 +77,7 @@ Rails.application.routes.draw do
       resources :customers, only: [:show, :edit, :update, :index]
       resources :orders, only: [:show, :update] do
         member do
-          resources :order_details, only: [:update]
+          resources :order_details, only: [:update], param: :detail_id
         end
 
       end

@@ -1,5 +1,5 @@
 class Admin::ItemsController < Admin::ApplicationController
-  
+
   def index
     records_per_page = 10
     current_page = params[:page].to_i
@@ -19,7 +19,7 @@ class Admin::ItemsController < Admin::ApplicationController
     @item = Item.new(item_params)
     @genre = Genre.all
     if @item.save
-      redirect_to admin_item_path(@item), notice: "created successfully"
+      redirect_to admin_item_path(@item), notice: "作成を完了しました"
     else
       render new_admin_item_path
     end
@@ -40,7 +40,7 @@ class Admin::ItemsController < Admin::ApplicationController
     @item = Item.find(params[:id])
     @genre = Genre.all
     if @item.update(item_params)
-      redirect_to admin_item_path(@item), notice: "update successfully"
+      redirect_to admin_item_path(@item), notice: "変更を完了しました"
     else
       render edit_admin_item_path(@item)
     end
