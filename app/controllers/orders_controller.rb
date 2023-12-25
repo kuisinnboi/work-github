@@ -62,14 +62,14 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
     @cart_items = CartItem.where(customer_id: current_customer.id)
   end
 
       def show
         @order = Order.find(params[:id])
         @cart_items = CartItem.where(customer_id: current_customer.id)
-        
+
         @order_details = @order.order_details
         @subtotal = 0
       end
