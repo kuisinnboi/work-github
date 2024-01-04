@@ -38,10 +38,10 @@ class OrdersController < ApplicationController
     else
       render :new
     end
-  end 
-  
+  end
+
   def error
-    
+
   end
 
   def create
