@@ -38,6 +38,10 @@ class OrdersController < ApplicationController
     else
       render :new
     end
+  end 
+  
+  def error
+    
   end
 
   def create
@@ -80,8 +84,8 @@ class OrdersController < ApplicationController
 
    private
    def order_params
-  params.require(:order).permit(:payment_method, :post_code, :address, :name, :shipping_cost, :total_payment)
-  end
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :shipping_cost, :total_payment)
+   end
 
 
 
