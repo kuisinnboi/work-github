@@ -40,6 +40,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def error
+
+  end
+
   def create
     @order = Order.new(order_params)
     @selected_pay_method = params[:order][:payment_method]
@@ -80,8 +84,8 @@ class OrdersController < ApplicationController
 
    private
    def order_params
-  params.require(:order).permit(:payment_method, :post_code, :address, :name, :shipping_cost, :total_payment)
-  end
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :shipping_cost, :total_payment)
+   end
 
 
 

@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create, :index, :show] do
     collection do
       get 'thanks'
+      get 'confirm', to: 'orders#error', as: 'error'
       post 'confirm', to: 'orders#confirm', as: 'confirm'
     end
   end
