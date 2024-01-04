@@ -1,0 +1,106 @@
+<div class='container my-3 bg-white ' style="padding: 40px;">
+  <div class='row d-flex justify-content-center'>
+    <div class='col-md-8'>
+      <div>
+        <h2>注文履歴詳細</h2>
+      </div>
+      <%= form_with model: @order, url: admin_order_path(@order) do |f| %>
+        <table class="table table-striped" style="margin-top: 6px; background-color: #fff;">
+
+          <tr>
+            <%= flash[:notice] %>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              購入者
+            </td>
+            <td>
+              <%= @order.customer.last_name %><%= @order.customer.first_name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              注文日
+            </td>
+            <td>
+              <%= @order.created_at.strftime('%Y/%m/%d') %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              配送先
+            </td>
+            <td>
+              <%= @order.address %>
+            </td>
+          </tr>
+          <tr>
+            <td class="table-warning">
+              支払方法
+            </td>
+            <td>
+              <%= @order.payment_method_i18n %>
+            </td>
+          </tr>
+            <tr>
+              <td class="table-warning">
+                注文ステータス
+              </td>
+              <td class="d-flex justify-content-between">
+                <%= f.select :status, options_for_select(Order.statuses.keys.map { |status| [I18n.t("enums.order.status.#{status}"), status] }, f.object.status) %>
+                <%= f.submit "更新する", class: "btn btn-sm btn-success" %>
+              </td>
+            </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+
+    <div class="row d-flex justify-content-center">
+      <div class='col-md-7'>
+      <% @order.order_details.each do |detail| %>
+        <%= form_with model: detail, url: admin_order_detail_path(@order, detail), method: :put do |detail_status| %>
+          <table class="table" style="background-color: #fff;">
+            <tr class="table-success">
+              <th>
+                商品名
+              </th>
+              <th>
+                単価(税込）
+              </th>
+              <th>
+                数量
+              </th>
+
+              <th>
+                製作ステータス
+              </th>
+              <th></th>
+            </tr>
+             <tr>
+              <td>
+                <%= detail.item.name %>
+              </td>
+              <td>
+                <%= detail.price %>
+              </td>
+              <td>
+                <%= detail.amount %>
+              </td>
+              <td>
+                <%= detail_status.select :making_status, options_for_select(OrderDetail.making_statuses.keys, detail_status.object.making_status) %>
+              </td>
+              <td>
+                <%= detail_status.submit "更新する", class: "btn btn-sm btn-success" %>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      <% end %>
+      <div class="text-right">
+        <%= link_to "#{@order.customer.last_name}様の注文一覧を見る", admin_home_path(@order.customer), class: "btn btn-sm btn-primary mr-3" %>
+        <%= link_to "一覧に戻る", admin_root_path, class: "btn btn-sm btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

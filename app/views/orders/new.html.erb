@@ -1,0 +1,54 @@
+<div class="container bg-white my-5 p-5">
+  <div class="row">
+    <div class="col">
+      <h2>注文情報入力</h2>
+      <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+      <div class="mx-5 px-2">
+      <h4>支払い方法</h4>
+         &emsp;<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+               <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
+       <br>
+       &emsp;<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+             <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
+     <div>
+       <h4>お届け先</h4>
+         &emsp;<%= f.radio_button :address_type, "customer_address", checked: true %>
+               <%= f.label :address_type, "ご自身の住所" %><br>
+         &emsp;&emsp;〒<%= current_customer.post_code %> <%= current_customer.address %><br>
+         &emsp;&emsp;<%= current_customer.last_name %> <%= current_customer.first_name %>
+     </div>
+       <br>
+        &emsp;<%= f.radio_button :address_type, [:registered_address] %>
+        <%= f.label :address_type, "登録済住所から選択" %><br>
+        &emsp;&emsp;<%= f.select :registered_address_id, current_customer.addresses.all.map { |m| [[m.post_code, m.address, m.name].join(" "), m.id] } ,include_blank: "登録してある配送先住所から選択" %>
+        <br>
+        &emsp;<%= f.radio_button :address_type, "new_address" %>
+        <%= f.label :address_type, "新しいお届け先" %>
+        <table>
+          <tr>
+            <td>&emsp;&emsp;郵便番号（ハイフンなし）</td>
+            <td><%= f.text_field :post_code, placeholder: "000000" %></td>
+          </tr>
+          <tr>
+           <td>&emsp;&emsp;住所</td>
+           <td><%= f.text_field :address, placeholder: "住所",size: "50" %></td>
+          </tr>
+          <tr>
+           <td>&emsp;&emsp;宛名</td>
+           <td>	<%= f.text_field :name, placeholder: "名前" %></td>
+      	</tr>
+      	</table>
+
+
+    <br>
+    <div class="text-center">
+    <%= f.submit  "確認画面へ進む", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
+
+  </div>
+
+
+  </div>
+</div>

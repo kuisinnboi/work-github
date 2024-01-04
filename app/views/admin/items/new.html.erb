@@ -1,0 +1,86 @@
+
+<div class='container my-5 bg-white' style="padding: 40px;">
+  <div class='row d-flex justify-content-center'>
+    <div class='col-md-10'>
+      <div>
+        <h2>商品新規登録</h2>
+      </div>
+        <div >
+          <%= form_with model: @item, url: admin_items_path do |f| %>
+            <% if @item.errors.any? %>
+              <div class="alert alert-warning">
+                <ul>
+                  <% @item.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <table class="table table-striped" style="background-color: #fff;">
+              <tr>
+                <td class="table-warning">
+                  商品画像
+                </td>
+                <td>
+                  <%= f.file_field :item_image %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-warning">
+                  商品名
+                </td>
+                <td>
+                  <%= f.text_field :name ,:placeholder => "商品名" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-warning">
+                  商品説明
+                </td>
+                <td>
+                  <%= f.text_area :introduction ,:placeholder => "ここに説明文を記述します" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-warning">
+                  ジャンル
+                </td>
+                <td>
+                  <%= f.collection_select(:genre_id, @genre, :id, :name) %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-warning">
+                  税抜価格
+                </td>
+                <td>
+                  <%= f.text_field :price ,:placeholder => "1000" %>
+                </td>
+              </tr>
+              <tr>
+                <td class="table-warning">
+                  販売ステータス
+                </td>
+                <td>
+                  <%= f.radio_button :is_active, :true %>
+                  販売中
+
+                  <%= f.radio_button :is_active, :false %>
+                  販売停止中
+                </td>
+              </tr>
+            </table>
+            <div class="m-auto text-center">
+              <%= f.submit "新規登録", class: "btn btn-sm btn-success"%>
+            </div>
+          <% end %>
+            <div class="m-auto text-right">
+              <%= link_to "戻る", admin_items_path, class: "btn btn-sm btn-primary" %>
+            </div>
+          </div>
+        </div>
+
+
+    </div>
+  </div>
+</div>

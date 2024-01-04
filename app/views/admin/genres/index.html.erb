@@ -1,0 +1,54 @@
+<div class='container my-5 bg-white' style="padding: 40px;">
+  <div class='row d-flex justify-content-center'>
+    <div class='col-md-10'>
+      <div style=" margin-bottom-10px;">
+        <h2>ジャンル一覧・追加</h2>
+      </div>
+      <div class="d-flex justify-content-between" style="background-color: #fff; padding-top: 5px;">
+        <div>
+          <%= flash[:notice] %>
+        </div>
+        <div>
+          <%= form_with model: @genre, url: admin_genres_path do |f| %>
+            <%= f.label :name ,"ジャンル名" %>
+            <%= f.text_field :name ,:placeholder => "ジャンル名" %>
+            <%= f.submit "新規登録" %>
+          <% end %>
+        </div>
+      </div>
+
+      <table class="table table-striped" style="background-color: #fff;">
+        <thead>
+          <tr class="table-warning">
+            <th>ジャンル名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @genres.each do |genre| %>
+          <tr>
+            <td><%= genre.name %></td>
+            <td>
+              <%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-success" %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+      <% if @total_pages > 1 %>
+        <div class="m-auto">
+          <div class="pagination d-flex justify-content-center">
+            <div>
+              <% (1..@total_pages).each do |page| %>
+                <% if page == @current_page %>
+                  <%= page %>
+
+                <% else %>
+                  <%= link_to page, admin_genres_path(page: page) %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

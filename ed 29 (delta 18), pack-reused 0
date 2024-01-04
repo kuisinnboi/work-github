@@ -1,0 +1,74 @@
+[33mcommit 078f7e9e10884d1c21918cd6e909949c1b827492[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/admin[m[33m)[m
+Author: mori618 <148190402+mori618@users.noreply.github.com>
+Date:   Fri Dec 15 09:02:39 2023 +0000
+
+    森　商品一覧画面
+
+[33mcommit c1278bf4896ebeaebb72b8a6416055e952ea6966[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Merge: a31e830 b39cde8
+Author: MoB0208 <146700419+MoB0208@users.noreply.github.com>
+Date:   Fri Dec 15 13:58:51 2023 +0900
+
+    Merge pull request #3 from kuisinnboi/feature
+    
+    Feature
+
+[33mcommit b39cde8ca219a220bfc4701d0ce5374f6f182b1b[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Fri Dec 15 04:39:35 2023 +0000
+
+    model追加
+
+[33mcommit 98536be98a9d6cdfbd65e063592f0e1689ee5ecc[m[33m ([m[1;31morigin/feature[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 14:30:58 2023 +0000
+
+    modelの追加
+
+[33mcommit a31e830d924ac333355113bfb9833d9ad20f8cfa[m
+Merge: 6e27195 5c75d31
+Author: KENTA0326 <139702953+KENTA0326@users.noreply.github.com>
+Date:   Thu Dec 14 17:13:24 2023 +0900
+
+    Merge pull request #2 from kuisinnboi/feature
+    
+    model追加
+
+[33mcommit 5c75d31d4cfc5e3abbbb99087efdfcf49b5c156c[m
+Author: EC2 Default User <ec2-user@ip-172-31-38-164.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 08:10:13 2023 +0000
+
+    model追加
+
+[33mcommit 6e27195baea8782678cc6fae861446de22cfb7e4[m
+Merge: cedd578 9c0a3f8
+Author: MoB0208 <146700419+MoB0208@users.noreply.github.com>
+Date:   Thu Dec 14 14:57:20 2023 +0900
+
+    Merge pull request #1 from kuisinnboi/install-devise
+    
+    devise install
+
+[33mcommit 9c0a3f89c9642a2d103e0f6a049809fad660b0a4[m[33m ([m[1;31morigin/install-devise[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 05:49:09 2023 +0000
+
+    Add Devise
+
+[33mcommit cedd578a0b97666b721c79b5cdb9c04a602d42f0[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 05:39:47 2023 +0000
+
+    first commit
+
+[33mcommit feda4b7982e231d0db940b81c442a3b307133443[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 05:33:55 2023 +0000
+
+    first commit
+
+[33mcommit f6497039cd6278f893a1c31236586ae64007eaa2[m
+Author: EC2 Default User <ec2-user@ip-172-31-30-127.ap-northeast-1.compute.internal>
+Date:   Thu Dec 14 05:24:05 2023 +0000
+
+    first commit

@@ -1,0 +1,72 @@
+<div class="container bg-white my-5 p-5">
+  <div class="">
+    <h2>マイページ</h2>
+    <div class="mt-3">
+      <div>
+        <table>
+          <tr>
+            <td><h5>登録情報</h5></td>
+            <td class="px-5"><%= link_to "編集する", customers_edit_path, class: "btn btn-success text-white edit_customer_#{@customer.id}" %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="actions">
+
+      </div>
+      <table class="table table-bordered mt-3">
+        <%# @customer.each do |customer| %>
+        <colgroup>
+          <col class="col-md-3">
+          <col class="col-md-6">
+        </colgroup>
+        <tr>
+        <%= flash[:notice] %>
+        </tr>
+        <tr>
+          <td class="table-warning">氏名</td>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-warning">カナ</td>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="table-warning">郵便番号</td>
+          <td><%= @customer.post_code %></td>
+        </tr>
+        <tr>
+          <td class="table-warning">住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="table-warning">電話番号</td>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td class="table-warning">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <%# end %>
+      </table>
+    </div>
+
+    <div>
+      <table class="mt-3">
+        <tr>
+          <td><h5>配送先　</h5></td>
+          <td class="px-5"><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary text-white" %></td>
+          <%#= link_to "一覧を見る", addresses_path(@addresses), class: "btn btn-primary text-white addresses_#{@addresseses.id}" %>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <table class="mt-3">
+        <tr>
+          <td><h5>注文履歴</h5></td>
+          <td class="px-5"><%= link_to "一覧を見る", orders_path, class: "btn btn-primary text-white" %></td>
+          <%#= link_to "一覧を見る", orders_path(@orders), class: "btn btn-primary text-white orders_#{@orders.id}" %>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

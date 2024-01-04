@@ -1,0 +1,40 @@
+<div class="container bg-white my-5">
+  <div class="row flex-column">
+    <h3 class="mx-5 my-5">ログイン</h3>
+    <div class="mx-5">
+      <p>会員の方はこちらからログイン</p>
+    </div>
+    <div class="center-block mx-auto">
+      <%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+        <table class="teble mt-auto">
+          <tr>
+            <td><%= f.label :email, "メールアドレス" %></td>
+            <td>
+              <div class="field mx-5">
+                <%= f.email_field :email, autofocus: true, class: "email", placeholder:"sample@example.com", size: 60 %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td><%= f.label :password, "パスワード" %></td>
+            <td>
+              <div class="field mx-5">
+                <%= f.password_field :password, autocomplete: "current-password", size: 60 %>
+              </div>
+            </td>
+          </tr>
+        </table>
+      <div class="text-center mt-3">
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row flex-column mx-5 my-5">
+    <p>会員登録がお済みでない方</p>
+    <div class="mx-5 px-5">
+      <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。</p>
+    </div>
+  </div>
+</div>

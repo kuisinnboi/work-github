@@ -1,0 +1,108 @@
+<div class="container my-5 p-5 bg-white">
+  <div class="row">
+
+      <h2>注文履歴詳細</h2>
+
+  </div>
+
+  <div class="row mt-5">
+    <div class="offset-1 col-4">
+
+      <div class="row">
+        <strong>注文情報</strong>
+      </div>
+
+      <div class="row">
+        <table class="table">
+          <tbody>
+            <tr>
+              <td class="table-warning">注文日</td>
+              <td><%= @order.created_at.strftime("%Y-%m-%d") %></td>
+            </tr>
+
+            <tr >
+              <td class="table-warning">配送先</td>
+              <td><%= @order.address %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">支払い方法</td>
+              <td><%= @order.payment_method_i18n %></td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">ステータス</td>
+              <td><%= @order.status_i18n %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="offset-1 col-4">
+      <div class="row">
+        <strong>請求情報</strong>
+      </div>
+
+      <div class="row">
+        <table class="table">
+
+          <tbody>
+            <tr>
+              <td class="table-warning">商品合計</td>
+              <td><%= @order.total_payment - @order.shipping_cost %>円</td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">配送料</td>
+              <td><%= @order.shipping_cost %>円</td>
+            </tr>
+
+            <tr>
+              <td class="table-warning">ご請求額</td>
+              <td><%= @order.total_payment %>円</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row">
+
+      <strong>注文内容</strong>
+
+  </div>
+
+  <div class="row">
+
+
+      <table class="table">
+        <thead>
+          <tr class="table-warning">
+            <th>商品</th>
+            <th>単価(税込)</th>
+            <th>個数</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+           <% @order_details.each do |order_details| %>
+    <tbody height="50">
+      <tr>
+        <td><%= order_details.item.name %></td>
+        <td><%= (order_details.price * 1.1).floor %>円</td>
+        <td><%= order_details.amount %></td>
+        <td><%= (order_details.amount * (order_details.price * 1.1).floor) %>円</td>
+      </tr>
+    </tbody>
+    <% end %>
+        </tbody>
+      </table>
+
+    </div>
+
+
+</div>
