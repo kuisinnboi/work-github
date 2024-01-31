@@ -3,14 +3,17 @@ class CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items.all
+    @nedan = 0
     # @cart_item = current_customer.cart_item
     # @item = @cart_item.item
   end
 
   def update
-     @cart_items = CartItem.find(params[:id])
-     @cart_items.update(cart_items_params)
-      redirect_to cart_items_path, notice: "数量を変更しました。"
+     @cart_item = CartItem.find(params[:id])
+     @cart_item.update(cart_items_params)
+     @cart_items = current_customer.cart_items.all
+     @nedan = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+      # redirect_to cart_items_path, notice: "数量を変更しました。"
   end
 
   def destroy
